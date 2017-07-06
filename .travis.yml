@@ -1,21 +1,17 @@
----
 language: node_js
+
 node_js:
-  - "6"
+  - "5"
 
-sudo: false
-
-cache:
-  directories:
-    - $HOME/.npm
-
-before_install:
-  - npm config set spin false
-  - npm install -g phantomjs-prebuilt
-  - phantomjs --version
-
-install:
-  - npm install
+before_script:
+  - npm install -g bower gulp-cli mocha
+  - npm run-script test-on-travis
+  - bower install
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
 
 script:
-  - npm test
+  - gulp coverage_frontend
+  - npm run-script test-on-travis
+
+services: mongodb
