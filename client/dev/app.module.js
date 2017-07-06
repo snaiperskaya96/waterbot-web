@@ -16,6 +16,7 @@ var todo_route_1 = require("./todo/components/todo-route");
 var todo_service_1 = require("./todo/services/todo-service");
 var login_route_1 = require("./login/components/login-route");
 var login_cmp_1 = require("./login/components/login-cmp");
+var user_service_1 = require("./login/services/user-service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -35,6 +36,7 @@ var AppModule = (function () {
             ],
             providers: [
                 todo_service_1.TodoService,
+                user_service_1.UserService
             ],
             bootstrap: [
                 app_1.App,

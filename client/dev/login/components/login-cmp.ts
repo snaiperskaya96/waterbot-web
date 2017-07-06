@@ -9,14 +9,21 @@ import {
   FormControl
 } from "@angular/forms";
 
+import {
+  UserService
+} from "../services/user-service";
+
 @Component({
   selector: "login-cmp",
   templateUrl: "login/templates/index.html",
   styleUrls: ["login/styles/index.css"]
 })
 export class LoginCmp implements OnInit {
+  username:string;
+  password:string;
+
   constructor(
-    //private _todoService: TodoService
+    private userService: UserService
     ) {
   }
 
@@ -41,5 +48,11 @@ export class LoginCmp implements OnInit {
 
   register() {
     alert('yay');
+  }
+
+  login() {
+    this.userService.login(this.username, this.password).subscribe(
+      user => {console.log(user)}
+    );
   }
 }

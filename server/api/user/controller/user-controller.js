@@ -1,6 +1,9 @@
 "use strict";
 
 const userDAO = require('../dao/user-dao');
+const jwt = require('jsonwebtoken')
+const config = require('../../../config/authentication')
+const Blowfish = require('javascript-blowfish').Blowfish;
 
 module.exports = class userController {
 
@@ -9,7 +12,19 @@ module.exports = class userController {
     userDAO
       .getOneByUsername(_user.username)
       .then(user => {
-        res.status(200).json(true);
+        let json = {token: false};
+        const blowfisher = new Blowfish(config.user.secret);
+        console.log()
+        if (
+          user 
+          && blowfisher.trimZeros(blowfisher.decrypt(user.password)) == _user.password
+        ) {
+          console.log('ciao')
+          let token = jwt.sign(user, config.jwt.token);
+          json.token = token;
+          res.cookie('wb_token', token);        
+        }
+        res.status(200).json(json);
       })
       .catch(error => res.status(400).json(error));
   }

@@ -4,12 +4,14 @@ const mongoose = require('mongoose');
 const Promise = require('bluebird');
 const userSchema = require('../model/user-model');
 const _ = require('lodash');
+const config = require('../../../config/authentication')
+const Blowfish = require('javascript-blowfish').Blowfish;
 
 userSchema.statics.getOneByUsername = (username) => {
   return new Promise((resolve, reject) => {
     const _query = {username: username};
 
-    user
+    userModel
       .findOne(_query)
       .exec((err, todos) => {
         err ? reject(err)
@@ -22,7 +24,7 @@ userSchema.statics.getAll = () => {
   return new Promise((resolve, reject) => {
     let _query = {};
 
-    user
+    userModel
       .find(_query)
       .exec((err, todos) => {
         err ? reject(err)
@@ -34,11 +36,13 @@ userSchema.statics.getAll = () => {
 userSchema.statics.createNew = (user) => {
   return new Promise((resolve, reject) => {
     if (!_.isObject(user)) {
-      return reject(new TypeError('Todo is not a valid object.'));
+      return reject(new TypeError('User is not a valid object.'));
     }
 
-    let _something = new user(user);
+    user.password = (new Blowfish(config.user.secret)).encrypt(user.password);
 
+    let _something = new userModel(user);
+  
     _something.save((err, saved) => {
       err ? reject(err)
         : resolve(saved);
@@ -52,7 +56,7 @@ userSchema.statics.removeById = (id) => {
       return reject(new TypeError('Id is not a valid string.'));
     }
 
-    user
+    userModel
       .findByIdAndRemove(id)
       .exec((err, deleted) => {
         err ? reject(err)
@@ -61,6 +65,6 @@ userSchema.statics.removeById = (id) => {
   });
 }
 
-const user = mongoose.model('user', userSchema);
+const userModel = mongoose.model('user', userSchema);
 
-module.exports = user;
+module.exports = userModel;

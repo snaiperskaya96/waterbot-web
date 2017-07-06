@@ -12,7 +12,7 @@ const fs = require("fs");
 const RoutesConfig = require("./config/routes.conf");
 const DBConfig = require("./config/db.conf");
 const Routes = require("./routes/index");
-
+const startupFunctions = require('./commons/startup');
 const app = express();
 
 RoutesConfig.init(app);
@@ -23,6 +23,8 @@ const opts = {
   key: fs.readFileSync(__dirname + "/cert/server.key"),
   cert: fs.readFileSync(__dirname + "/cert/server.crt")
 }
+
+startupFunctions.forEach((callback) => callback());
 
 http2.createServer(opts, app)
      .listen(PORT, () => {

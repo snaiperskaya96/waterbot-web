@@ -10,8 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var user_service_1 = require("../services/user-service");
 var LoginCmp = (function () {
-    function LoginCmp() {
+    function LoginCmp(userService) {
+        this.userService = userService;
     }
     LoginCmp.prototype.ngOnInit = function () {
         this._getAll();
@@ -31,13 +33,16 @@ var LoginCmp = (function () {
     LoginCmp.prototype.register = function () {
         alert('yay');
     };
+    LoginCmp.prototype.login = function () {
+        this.userService.login(this.username, this.password).subscribe(function (user) { console.log(user); });
+    };
     LoginCmp = __decorate([
         core_1.Component({
             selector: "login-cmp",
             templateUrl: "login/templates/index.html",
             styleUrls: ["login/styles/index.css"]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [user_service_1.UserService])
     ], LoginCmp);
     return LoginCmp;
 }());

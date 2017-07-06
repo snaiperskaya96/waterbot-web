@@ -8,6 +8,7 @@ import { todoRouting } from "./todo/components/todo-route";
 import { TodoService }   from "./todo/services/todo-service";
 import { loginRouting } from "./login/components/login-route";
 import { LoginCmp } from "./login/components/login-cmp";
+import { UserService } from "./login/services/user-service";
 
 @NgModule({
     imports: [
@@ -24,6 +25,7 @@ import { LoginCmp } from "./login/components/login-cmp";
     ],
     providers: [
       TodoService,
+      UserService
     ],
     bootstrap: [
       App,

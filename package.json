@@ -35,6 +35,8 @@
     "express-content-length-validator": "1.0.0",
     "express-jwt": "^5.3.0",
     "helmet": "^2.1.1",
+    "javascript-blowfish": "^1.0.4",
+    "jsonwebtoken": "^7.4.1",
     "lodash": "^4.6.1",
     "mongoose": "^4.4.7",
     "morgan": "^1.5.2",
