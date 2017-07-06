@@ -1,3 +1,4 @@
+var cookieParser = require('cookie-parser')
 module.exports = {
     jwt: {
         token: process.env.WATERBOT_JWT_TOKEN || 'c3b12u31bndsdx7dxdynydyd',
@@ -6,7 +7,18 @@ module.exports = {
             if (req.cookies && req.cookies.wb_token) {
                 cookie = req.cookies.wb_token;
             }
-            return req.headers.authorization || cookie;
+
+            let cookies = req.headers.cookie.split(';');
+            let tokenCookie = null;
+            cookies.forEach((c) => {
+                if (c.split('=')[0] == 'wb_token') {
+                    let splitted = c.split('=');
+                    splitted.shift();
+                    tokenCookie = splitted.join('=');
+                }
+            })
+
+            return req.headers.authorization || cookie || tokenCookie;
         }
     },
     cookies: {

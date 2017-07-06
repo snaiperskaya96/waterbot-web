@@ -20,7 +20,7 @@ module.exports = class Routes {
           extended: true
         }));
 
-        app.use(cookieParser(authenticationConfig.cookies.secret));
+        app.use(cookieParser());
 
         UserRoutes.init(router);
 

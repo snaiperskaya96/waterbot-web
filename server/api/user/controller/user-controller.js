@@ -14,12 +14,10 @@ module.exports = class userController {
       .then(user => {
         let json = {token: false};
         const blowfisher = new Blowfish(config.user.secret);
-        console.log()
         if (
           user 
           && blowfisher.trimZeros(blowfisher.decrypt(user.password)) == _user.password
         ) {
-          console.log('ciao')
           let token = jwt.sign(user, config.jwt.token);
           json.token = token;
           res.cookie('wb_token', token);        
@@ -27,6 +25,10 @@ module.exports = class userController {
         res.status(200).json(json);
       })
       .catch(error => res.status(400).json(error));
+  }
+
+  static isValid(req, res) {
+    const token = config.jwt.getToken(req);
   }
 
   static getAll(req, res) {
