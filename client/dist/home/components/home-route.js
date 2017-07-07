@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var router_1=require("@angular/router"),home_cmp_1=require("../components/home-cmp"),routes=[{path:"",component:home_cmp_1.HomeCmp,pathMatch:"full"}];exports.HomeRouting=router_1.RouterModule.forRoot(routes);

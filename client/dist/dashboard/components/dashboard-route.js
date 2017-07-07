@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var router_1=require("@angular/router"),dashboard_cmp_1=require("../components/dashboard-cmp"),dashboardRoutes=[{path:"dashboard",component:dashboard_cmp_1.DashboardCmp,pathMatch:"full"}];exports.dashboardRouting=router_1.RouterModule.forRoot(dashboardRoutes);

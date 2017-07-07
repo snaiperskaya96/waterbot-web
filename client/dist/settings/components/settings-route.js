@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var router_1=require("@angular/router"),settings_cmp_1=require("./settings-cmp"),settingsRoutes=[{path:"settings",component:settings_cmp_1.SettingsCmp,pathMatch:"full"}];exports.SettingsRouting=router_1.RouterModule.forRoot(settingsRoutes);
