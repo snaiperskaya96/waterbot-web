@@ -13,7 +13,7 @@ const cookieParser = require('cookie-parser');
 
 module.exports = class Routes {
       static init(app, router) {
-        app.use(jwt({
+        app.use('/api', jwt({
           secret: authenticationConfig.jwt.token,
           getToken: authenticationConfig.jwt.getToken
         }).unless({path: ['/api/user/authenticate', '/api/user/verify']}));
