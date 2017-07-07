@@ -5,7 +5,7 @@
   <h3>By Josh Adamous</h3>
 </hgroup>
 -->
-<form>
+<form (ngSubmit)="submit()">
   <div class="group">
     <input type="text" [(ngModel)]="username" name="username"><span class="highlight"></span><span class="bar"></span>
     <label>Username</label>
@@ -14,7 +14,7 @@
     <input type="password" [(ngModel)]="password" name="password"><span class="highlight"></span><span class="bar"></span>
     <label>Password</label>
   </div>
-  <button type="button" (click)="login()" class="button buttonBlue">Login
+  <button type="submit" (click)="login()" class="button buttonBlue">Login
     <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
   </button>
   <p class="center no-margin"><small> or register <a href='#' (click)="register()">here</a></small></p>

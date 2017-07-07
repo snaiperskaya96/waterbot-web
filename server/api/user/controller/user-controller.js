@@ -18,17 +18,19 @@ module.exports = class userController {
           user 
           && blowfisher.trimZeros(blowfisher.decrypt(user.password)) == _user.password
         ) {
-          let token = jwt.sign(user, config.jwt.token);
+          let token = jwt.sign(user.toObject(), config.jwt.token, {expiresIn: '8 hours'});
+          user.lastSessionToken = token;
+          user.save();
           json.token = token;
-          res.cookie('wb_token', token);        
+          res.cookie('wb_token', token);
         }
         res.status(200).json(json);
       })
       .catch(error => res.status(400).json(error));
   }
 
-  static isValid(req, res) {
-    const token = config.jwt.getToken(req);
+  static verify(req, res) {
+    res.status(200).json(req.isTokenValid);
   }
 
   static getAll(req, res) {
@@ -38,10 +40,47 @@ module.exports = class userController {
       .catch(error => res.status(400).json(error));
   }
 
+  static get(req, res) {
+    userDAO
+      .getOneById(req.user._id)
+      .then(user => res.status(200).json(user.toObject()))
+      .catch(error => res.status(400).json(error));
+  }
+
+  static getTokens(req, res) {
+    userDAO.
+      getOneById(req.user._id)
+      .then(user => res.status(200).json(user.apiTokens))
+      .catch(error => res.status(400).json(error));
+  }
+
+  static newToken(req, res) {
+    userDAO
+      .getOneById(req.user._id)
+      .then(user => {
+        const token = jwt.sign({_id: user._id}, config.jwt.token);
+        user.apiTokens.push(token);
+        user.save();
+        res.status(200).json(token);
+      }).catch(error => res.status(400).json(error));
+  }
+
+  static deleteToken(req, res) {
+      userDAO
+      .getOneById(req.user._id)
+      .then(user => {
+        if (req.body.token && user && user.apiTokens.indexOf(req.body.token) > -1) {
+          user.apiTokens = user.apiTokens.filter(element => element !== req.body.token);
+          user.save();
+          res.status(200).json(true);
+        } else {
+          res.status(200).json(false);
+        }
+      }).catch(error => res.status(400).json(error));
+  }
+
   static createNew(req, res) {
-    console.log(req)
     let _user = req.body;
-    console.log(_user);
     userDAO
       .createNew(_user)
       .then(user => res.status(201).json(user))

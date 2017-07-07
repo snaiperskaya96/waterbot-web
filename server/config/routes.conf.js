@@ -7,6 +7,9 @@ const helmet = require("helmet");
 const express = require("express");
 const compression = require("compression");
 const zlib = require("zlib");
+const config = require('./authentication')
+const jwt = require('jsonwebtoken');
+const User = require('../api/user/dao/user-dao')
 
 module.exports = class RouteConfig {
     static init(application) {
@@ -27,5 +30,22 @@ module.exports = class RouteConfig {
         application.use(morgan("dev"));
         application.use(contentLength.validateMax({max: 999}));
         application.use(helmet());
+
+        application.use((req, res, next) => {
+          req.isTokenValid = false;
+          const token = config.jwt.getToken(req);
+          if (token) {
+            let decodedUser;
+            try { decodedUser = jwt.verify(token, config.jwt.token) } catch (err) {next();}
+            User.getOneById(decodedUser._id)
+            .then(user => {
+              req.isTokenValid = user.lastSessionToken == token || user.apiTokens.indexOf(token) > 0;
+              next();
+            });
+          } else {
+              next();            
+          }
+        });
+
     }
 }

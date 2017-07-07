@@ -1,8 +1,9 @@
 {
     "compilerOptions": {
+        "baseUrl": ".",
         "module": "commonjs",
         "moduleResolution": "node",
-        "target": "es5",
+        "target": "es6",
         "sourceMap": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,

@@ -2,7 +2,9 @@
 
 const TodoRoutes = require("../api/todo/route/todo-route");
 const UserRoutes = require("../api/user/route/user-route");
+const PlantRoutes = require('../api/plant/route/plant-route');
 
+const User = require('../api/user/dao/user-dao');
 const StaticDispatcher = require("../commons/static/index");
 const jwt = require('express-jwt');
 const authenticationConfig = require('../config/authentication');
@@ -14,7 +16,7 @@ module.exports = class Routes {
         app.use(jwt({
           secret: authenticationConfig.jwt.token,
           getToken: authenticationConfig.jwt.getToken
-        }).unless({path: ['/api/user/authenticate']}));
+        }).unless({path: ['/api/user/authenticate', '/api/user/verify']}));
 
         app.use(bodyParser.urlencoded({
           extended: true
@@ -23,6 +25,7 @@ module.exports = class Routes {
         app.use(cookieParser());
 
         UserRoutes.init(router);
+        PlantRoutes.init(router);
 
         router
           .route("*")
@@ -32,11 +35,10 @@ module.exports = class Routes {
         app.use("/", router);
 
         // Error handling
-        app.use(function (err, req, res, next) {
+        app.use((err, req, res, next) => {
           if (err.name === 'UnauthorizedError') {
             res.status(401).send('Invalid token...');
           }
         });
-
    }
 }

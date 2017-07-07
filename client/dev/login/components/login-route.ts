@@ -15,4 +15,4 @@ const loginRoutes:Routes = [
 	}
 ]
 
-export const loginRouting = RouterModule.forRoot(loginRoutes);
+//export const loginRouting = RouterModule.forRoot(loginRoutes);

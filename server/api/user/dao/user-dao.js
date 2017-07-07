@@ -13,11 +13,22 @@ userSchema.statics.getOneByUsername = (username) => {
 
     userModel
       .findOne(_query)
-      .exec((err, todos) => {
+      .exec((err, user) => {
         err ? reject(err)
-          : resolve(todos);
+          : resolve(user);
       });
   });
+}
+
+userSchema.statics.getOneById = (id) => {
+  return new Promise((resolve, reject) => {
+    let _query = {_id: id};
+    userModel
+      .findOne(_query)
+      .exec((err, user) => {
+        err ? reject (err) : resolve(user);
+      })
+  })
 }
 
 userSchema.statics.getAll = () => {
@@ -64,6 +75,17 @@ userSchema.statics.removeById = (id) => {
       });
   });
 }
+
+if (!userSchema.options.toObject) userSchema.options.toObject = {};
+
+userSchema.options.toObject.transform = function (doc, ret, options) {
+  delete ret.password;
+  delete ret.lastSessionToken;
+  delete ret.__v;
+  delete ret.createdAt;
+  return ret;
+}
+
 
 const userModel = mongoose.model('user', userSchema);
 

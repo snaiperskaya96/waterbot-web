@@ -7,8 +7,7 @@ module.exports = {
             if (req.cookies && req.cookies.wb_token) {
                 cookie = req.cookies.wb_token;
             }
-
-            let cookies = req.headers.cookie.split(';');
+            let cookies = req.headers.cookie ? req.headers.cookie.split(';') : [];
             let tokenCookie = null;
             cookies.forEach((c) => {
                 if (c.split('=')[0] == 'wb_token') {

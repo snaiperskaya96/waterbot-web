@@ -1,0 +1,23 @@
+<div>
+  <h3>API Settings</h3>
+</div>
+
+<div>
+  Active API tokens: {{tokens.length}}
+</div>
+
+<div>
+  <div class="row text-right">
+    <a href="javascript:void(0)" (click)="generateNewToken()" disabled="disabled" class="disabled"><i class="material-icons">add_circle_outline</i></a>
+  </div>
+    <div class="row" *ngFor="let token of tokens">
+      <div class="col-lg-6 col-lg-offset-3">
+        <div class="input-group">
+          <input type="text" class="form-control" readonly aria-readonly="true" value="{{token}}">
+          <span class="input-group-btn">
+            <button class="btn btn-default btn-warning" type="button" (click)="deleteToken(token)"><i class="material-icons">delete</i></button>
+          </span>
+        </div><!-- /input-group -->
+      </div><!-- /.col-lg-6 -->
+    </div><!-- /.row -->
+</div>

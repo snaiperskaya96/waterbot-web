@@ -12,29 +12,62 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
+const core_1 = require("@angular/core");
+const http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
-var UserService = (function () {
-    function UserService(_http) {
+const core_2 = require("angular2-cookie/core");
+let UserService = UserService_1 = class UserService {
+    constructor(_http, cookie) {
         this._http = _http;
+        this.cookie = cookie;
+        this.authenticationCallbacks = [];
     }
-    UserService_1 = UserService;
-    UserService.prototype.login = function (username, password) {
+    login(username, password) {
         return this._http
             .post(UserService_1.ENDPOINT + "authenticate", {
             username: username,
             password: password
         })
-            .map(function (r) { return r.json(); });
-    };
-    UserService.ENDPOINT = "/api/user/";
-    UserService = UserService_1 = __decorate([
-        core_1.Injectable(),
-        __param(0, core_1.Inject(http_1.Http)),
-        __metadata("design:paramtypes", [http_1.Http])
-    ], UserService);
-    return UserService;
-    var UserService_1;
-}());
+            .map((r) => r.json());
+    }
+    getApiTokens() {
+        return this._http
+            .get(UserService_1.ENDPOINT + "tokens")
+            .map(r => r.json());
+    }
+    newApiToken() {
+        return this._http
+            .post(UserService_1.ENDPOINT + "tokens", {})
+            .map(r => r.json());
+    }
+    deleteApiToken(token) {
+        return this._http
+            .post(UserService_1.ENDPOINT + "tokens/delete", { token: token })
+            .map(r => r.json());
+    }
+    logout() {
+        this.cookie.remove('wb_token');
+        this.authorized(false);
+    }
+    verify(token) {
+        return this._http
+            .get(UserService_1.ENDPOINT + "verify")
+            .map(r => r.json());
+    }
+    observeAuthentication(callback) {
+        this.authenticationCallbacks.push(callback);
+    }
+    authorized(isAuthorized) {
+        this.authenticationCallbacks.forEach(callback => {
+            callback(isAuthorized);
+        });
+    }
+};
+UserService.ENDPOINT = "/api/user/";
+UserService = UserService_1 = __decorate([
+    core_1.Injectable(),
+    __param(0, core_1.Inject(http_1.Http)),
+    __metadata("design:paramtypes", [http_1.Http, core_2.CookieService])
+], UserService);
 exports.UserService = UserService;
+var UserService_1;

@@ -6,7 +6,7 @@ module.exports = class userRoutes {
   static init(router) {
     router
       .route('/api/user')
-      .get(userController.getAll)
+      .get(userController.get)
       .post(userController.createNew);
 
     router
@@ -16,5 +16,18 @@ module.exports = class userRoutes {
     router
       .route('/api/user/authenticate')
       .post(userController.authenticate)
+
+    router
+      .route('/api/user/verify')
+      .get(userController.verify)
+
+    router
+      .route('/api/user/tokens')
+      .get(userController.getTokens)
+      .post(userController.newToken)
+
+    router
+      .route('/api/user/tokens/delete')
+      .post(userController.deleteToken)
   }
 }
