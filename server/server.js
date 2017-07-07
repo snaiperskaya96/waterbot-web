@@ -4,6 +4,7 @@
     require("newrelic");
 */
 const PORT = process.env.PORT || 3333;
+const HOST = process.env.HOST || 'localhost';
 
 const os = require("os");
 const http2 = require("spdy");
@@ -27,7 +28,7 @@ const opts = {
 startupFunctions.forEach((callback) => callback());
 
 http2.createServer(opts, app)
-     .listen(PORT, () => {
-       console.log(`up and running @: ${os.hostname()} on port: ${PORT}`);
+     .listen(PORT, HOST, () => {
+       console.log(`up and running @: ${HOST} on port: ${PORT}`);
        console.log(`enviroment: ${process.env.NODE_ENV}`);
      });
