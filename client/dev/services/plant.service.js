@@ -12,23 +12,25 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@angular/core");
-const http_1 = require("@angular/http");
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
-let PlantService = PlantService_1 = class PlantService {
-    constructor(http) {
+var PlantService = (function () {
+    function PlantService(http) {
         this.http = http;
     }
-    getAll() {
+    PlantService_1 = PlantService;
+    PlantService.prototype.getAll = function () {
         return this.http.get(PlantService_1.ENDPOINT)
-            .map(response => response.json());
-    }
-};
-PlantService.ENDPOINT = "/api/plant/";
-PlantService = PlantService_1 = __decorate([
-    core_1.Injectable(),
-    __param(0, core_1.Inject(http_1.Http)),
-    __metadata("design:paramtypes", [http_1.Http])
-], PlantService);
+            .map(function (response) { return response.json(); });
+    };
+    PlantService.ENDPOINT = "/api/plant/";
+    PlantService = PlantService_1 = __decorate([
+        core_1.Injectable(),
+        __param(0, core_1.Inject(http_1.Http)),
+        __metadata("design:paramtypes", [http_1.Http])
+    ], PlantService);
+    return PlantService;
+    var PlantService_1;
+}());
 exports.PlantService = PlantService;
-var PlantService_1;

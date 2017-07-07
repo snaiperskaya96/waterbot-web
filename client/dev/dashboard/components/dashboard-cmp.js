@@ -6,21 +6,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@angular/core");
-let DashboardCmp = class DashboardCmp {
-    constructor() {
-        this.name = `yo, I"m your component :D`;
+var core_1 = require("@angular/core");
+var DashboardCmp = (function () {
+    function DashboardCmp() {
+        this.name = "yo, I\"m your component :D";
     }
-    ngOnInit() {
+    DashboardCmp.prototype.ngOnInit = function () {
         $.getScript('../../assets/js/material-dashboard.js');
         $.getScript('../../assets/js/initMenu.js');
-    }
-};
-DashboardCmp = __decorate([
-    core_1.Component({
-        selector: "dashboard-cmp",
-        templateUrl: "dashboard/templates/dashboard.html",
-        styleUrls: ["dashboard/styles/dashboard.css"]
-    })
-], DashboardCmp);
+    };
+    DashboardCmp = __decorate([
+        core_1.Component({
+            selector: "dashboard-cmp",
+            templateUrl: "dashboard/templates/dashboard.html",
+            styleUrls: ["dashboard/styles/dashboard.css"]
+        })
+    ], DashboardCmp);
+    return DashboardCmp;
+}());
 exports.DashboardCmp = DashboardCmp;

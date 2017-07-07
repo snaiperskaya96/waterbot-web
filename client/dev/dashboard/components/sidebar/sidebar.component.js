@@ -6,18 +6,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@angular/core");
-const sidebar_routes_config_1 = require("./sidebar-routes.config");
-let SidebarComponent = class SidebarComponent {
-    ngOnInit() {
-        $.getScript('../../../assets/js/sidebar-moving-tab.js');
-        this.menuItems = sidebar_routes_config_1.ROUTES.filter(menuItem => menuItem);
+var core_1 = require("@angular/core");
+var sidebar_routes_config_1 = require("./sidebar-routes.config");
+var SidebarComponent = (function () {
+    function SidebarComponent() {
     }
-};
-SidebarComponent = __decorate([
-    core_1.Component({
-        selector: 'sidebar-cmp',
-        templateUrl: 'dashboard/components/sidebar/sidebar.component.html',
-    })
-], SidebarComponent);
+    SidebarComponent.prototype.ngOnInit = function () {
+        $.getScript('../../../assets/js/sidebar-moving-tab.js');
+        this.menuItems = sidebar_routes_config_1.ROUTES.filter(function (menuItem) { return menuItem; });
+    };
+    SidebarComponent = __decorate([
+        core_1.Component({
+            selector: 'sidebar-cmp',
+            templateUrl: 'dashboard/components/sidebar/sidebar.component.html',
+        })
+    ], SidebarComponent);
+    return SidebarComponent;
+}());
 exports.SidebarComponent = SidebarComponent;

@@ -9,41 +9,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@angular/core");
-const user_service_1 = require("client/dev/login/services/user-service");
-let SettingsApiCmp = class SettingsApiCmp {
-    constructor(userService) {
+var core_1 = require("@angular/core");
+var user_service_1 = require("client/dev/login/services/user-service");
+var SettingsApiCmp = (function () {
+    function SettingsApiCmp(userService) {
+        var _this = this;
         this.userService = userService;
         this.tokens = [];
         this.canAddNewToken = true;
-        userService.getApiTokens().subscribe(tokens => this.tokens = tokens);
+        userService.getApiTokens().subscribe(function (tokens) { return _this.tokens = tokens; });
     }
-    generateNewToken() {
+    SettingsApiCmp.prototype.generateNewToken = function () {
+        var _this = this;
         if (!this.canAddNewToken)
             return;
-        this.userService.newApiToken().subscribe(token => {
+        this.userService.newApiToken().subscribe(function (token) {
             if (token) {
-                this.tokens.push(token);
+                _this.tokens.push(token);
             }
         });
         this.canAddNewToken = false;
-        setTimeout(() => this.canAddNewToken = true, 5000);
-    }
-    deleteToken(token) {
-        this.userService.deleteApiToken(token).subscribe(result => {
+        setTimeout(function () { return _this.canAddNewToken = true; }, 5000);
+    };
+    SettingsApiCmp.prototype.deleteToken = function (token) {
+        var _this = this;
+        this.userService.deleteApiToken(token).subscribe(function (result) {
             if (result) {
-                this.tokens = this.tokens.filter(item => item !== token);
+                _this.tokens = _this.tokens.filter(function (item) { return item !== token; });
             }
         });
-    }
-};
-SettingsApiCmp = __decorate([
-    core_1.Component({
-        selector: "settings-api-cmp",
-        templateUrl: "settings/templates/settings-api.html",
-        styleUrls: ["settings/styles/settings-api.css"],
-        providers: [user_service_1.UserService]
-    }),
-    __metadata("design:paramtypes", [user_service_1.UserService])
-], SettingsApiCmp);
+    };
+    SettingsApiCmp = __decorate([
+        core_1.Component({
+            selector: "settings-api-cmp",
+            templateUrl: "settings/templates/settings-api.html",
+            styleUrls: ["settings/styles/settings-api.css"],
+            providers: [user_service_1.UserService]
+        }),
+        __metadata("design:paramtypes", [user_service_1.UserService])
+    ], SettingsApiCmp);
+    return SettingsApiCmp;
+}());
 exports.SettingsApiCmp = SettingsApiCmp;

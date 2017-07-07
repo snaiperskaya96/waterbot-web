@@ -9,19 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@angular/core");
-const sidebar_routes_config_1 = require("../sidebar/sidebar-routes.config");
-const common_1 = require("@angular/common");
-const user_service_1 = require("../../../login/services/user-service");
-let NavbarComponent = class NavbarComponent {
-    constructor(location, userService) {
+var core_1 = require("@angular/core");
+var sidebar_routes_config_1 = require("../sidebar/sidebar-routes.config");
+var common_1 = require("@angular/common");
+var user_service_1 = require("../../../login/services/user-service");
+var NavbarComponent = (function () {
+    function NavbarComponent(location, userService) {
         this.userService = userService;
         this.location = location;
     }
-    ngOnInit() {
-        this.listTitles = sidebar_routes_config_1.ROUTES.filter(listTitle => listTitle);
-    }
-    getTitle() {
+    NavbarComponent.prototype.ngOnInit = function () {
+        this.listTitles = sidebar_routes_config_1.ROUTES.filter(function (listTitle) { return listTitle; });
+    };
+    NavbarComponent.prototype.getTitle = function () {
         var titlee = this.location.prepareExternalUrl(this.location.path());
         if (titlee.charAt(0) === '#') {
             titlee = titlee.slice(2);
@@ -32,16 +32,17 @@ let NavbarComponent = class NavbarComponent {
             }
         }
         return 'Dashboard';
-    }
-    logout() {
+    };
+    NavbarComponent.prototype.logout = function () {
         this.userService.logout();
-    }
-};
-NavbarComponent = __decorate([
-    core_1.Component({
-        selector: 'navbar-cmp',
-        templateUrl: 'dashboard/components/navbar/navbar.component.html',
-    }),
-    __metadata("design:paramtypes", [common_1.Location, user_service_1.UserService])
-], NavbarComponent);
+    };
+    NavbarComponent = __decorate([
+        core_1.Component({
+            selector: 'navbar-cmp',
+            templateUrl: 'dashboard/components/navbar/navbar.component.html',
+        }),
+        __metadata("design:paramtypes", [common_1.Location, user_service_1.UserService])
+    ], NavbarComponent);
+    return NavbarComponent;
+}());
 exports.NavbarComponent = NavbarComponent;

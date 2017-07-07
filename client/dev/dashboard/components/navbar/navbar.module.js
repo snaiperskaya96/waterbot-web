@@ -6,17 +6,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@angular/core");
-const common_1 = require("@angular/common");
-const router_1 = require("@angular/router");
-const navbar_component_1 = require("./navbar.component");
-let NavbarModule = class NavbarModule {
-};
-NavbarModule = __decorate([
-    core_1.NgModule({
-        imports: [router_1.RouterModule, common_1.CommonModule],
-        declarations: [navbar_component_1.NavbarComponent],
-        exports: [navbar_component_1.NavbarComponent]
-    })
-], NavbarModule);
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
+var router_1 = require("@angular/router");
+var navbar_component_1 = require("./navbar.component");
+var NavbarModule = (function () {
+    function NavbarModule() {
+    }
+    NavbarModule = __decorate([
+        core_1.NgModule({
+            imports: [router_1.RouterModule, common_1.CommonModule],
+            declarations: [navbar_component_1.NavbarComponent],
+            exports: [navbar_component_1.NavbarComponent]
+        })
+    ], NavbarModule);
+    return NavbarModule;
+}());
 exports.NavbarModule = NavbarModule;

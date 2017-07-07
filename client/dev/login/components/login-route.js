@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const login_cmp_1 = require("../components/login-cmp");
-const loginRoutes = [
+var login_cmp_1 = require("../components/login-cmp");
+var loginRoutes = [
     {
         path: "",
         component: login_cmp_1.LoginCmp,

@@ -1,6 +1,6 @@
-describe('myComponent', () => {
-    beforeEach(() => {
+describe('myComponent', function () {
+    beforeEach(function () {
     });
-    describe("creation", () => {
+    describe("creation", function () {
     });
 });

@@ -9,61 +9,64 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@angular/core");
-const user_service_1 = require("../services/user-service");
-const router_1 = require("@angular/router");
-const core_2 = require("angular2-cookie/core");
-let LoginCmp = class LoginCmp {
-    constructor(userService, router, cookie) {
+var core_1 = require("@angular/core");
+var user_service_1 = require("../services/user-service");
+var router_1 = require("@angular/router");
+var core_2 = require("angular2-cookie/core");
+var LoginCmp = (function () {
+    function LoginCmp(userService, router, cookie) {
+        var _this = this;
         this.userService = userService;
         this.router = router;
         this.cookie = cookie;
         userService
             .verify(cookie.get('wb_token'))
-            .subscribe(isAuthenticated => {
-            this.userService.authorized(isAuthenticated);
+            .subscribe(function (isAuthenticated) {
+            _this.userService.authorized(isAuthenticated);
         });
     }
-    ngOnInit() {
+    LoginCmp.prototype.ngOnInit = function () {
         $.getScript('../../../assets/js/login.js');
         this._getAll();
-    }
-    _getAll() {
+    };
+    LoginCmp.prototype._getAll = function () {
         /*this._todoService
             .getAll()
             .subscribe((todos) => {
               this.todos = todos;
             });
             */
-    }
-    add(message) {
-    }
-    remove(id) {
-    }
-    register() {
+    };
+    LoginCmp.prototype.add = function (message) {
+    };
+    LoginCmp.prototype.remove = function (id) {
+    };
+    LoginCmp.prototype.register = function () {
         alert('yay');
-    }
-    login() {
-        this.userService.login(this.username, this.password).subscribe(response => {
+    };
+    LoginCmp.prototype.login = function () {
+        var _this = this;
+        this.userService.login(this.username, this.password).subscribe(function (response) {
             if (response.token) {
-                this.userService.authorized(response.token ? true : false);
-                this.cookie.putObject('u', { a: true });
+                _this.userService.authorized(response.token ? true : false);
+                _this.cookie.putObject('u', { a: true });
             }
         });
-    }
-    submit() {
+    };
+    LoginCmp.prototype.submit = function () {
         this.login();
-    }
-};
-LoginCmp = __decorate([
-    core_1.Component({
-        selector: "login-cmp",
-        templateUrl: "login/templates/index.html",
-        styleUrls: ["login/styles/index.css"],
-        providers: [core_2.CookieService]
-    }),
-    __metadata("design:paramtypes", [user_service_1.UserService,
-        router_1.Router,
-        core_2.CookieService])
-], LoginCmp);
+    };
+    LoginCmp = __decorate([
+        core_1.Component({
+            selector: "login-cmp",
+            templateUrl: "login/templates/index.html",
+            styleUrls: ["login/styles/index.css"],
+            providers: [core_2.CookieService]
+        }),
+        __metadata("design:paramtypes", [user_service_1.UserService,
+            router_1.Router,
+            core_2.CookieService])
+    ], LoginCmp);
+    return LoginCmp;
+}());
 exports.LoginCmp = LoginCmp;

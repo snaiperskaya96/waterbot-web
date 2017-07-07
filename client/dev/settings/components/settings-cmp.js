@@ -9,9 +9,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@angular/core");
-let SettingsCmp = class SettingsCmp {
-    constructor() {
+var core_1 = require("@angular/core");
+var SettingsCmp = (function () {
+    function SettingsCmp() {
         this.menu = [
             { name: 'API', class: 'active', id: 0 },
             { name: 'Plants', class: '', id: 1 }
@@ -19,24 +19,26 @@ let SettingsCmp = class SettingsCmp {
         this.components = ['settings-api-cmp', 'settings-plants-cmp'];
         this.setActiveComponent(0);
     }
-    setActiveComponent(component) {
-        this.menu.forEach((voice, id) => {
+    SettingsCmp.prototype.setActiveComponent = function (component) {
+        var _this = this;
+        this.menu.forEach(function (voice, id) {
             if (voice.id == component) {
-                this.menu[id].class = 'active';
-                this.activeComponent = this.components[voice.id];
+                _this.menu[id].class = 'active';
+                _this.activeComponent = _this.components[voice.id];
             }
             else {
-                this.menu[id].class = '';
+                _this.menu[id].class = '';
             }
         });
-    }
-};
-SettingsCmp = __decorate([
-    core_1.Component({
-        selector: "settings-cmp",
-        templateUrl: "settings/templates/settings.html",
-        styleUrls: ["settings/styles/settings.css"]
-    }),
-    __metadata("design:paramtypes", [])
-], SettingsCmp);
+    };
+    SettingsCmp = __decorate([
+        core_1.Component({
+            selector: "settings-cmp",
+            templateUrl: "settings/templates/settings.html",
+            styleUrls: ["settings/styles/settings.css"]
+        }),
+        __metadata("design:paramtypes", [])
+    ], SettingsCmp);
+    return SettingsCmp;
+}());
 exports.SettingsCmp = SettingsCmp;

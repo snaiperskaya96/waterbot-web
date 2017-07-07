@@ -12,41 +12,43 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@angular/core");
-const http_1 = require("@angular/http");
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
-let TodoService = TodoService_1 = class TodoService {
-    constructor(_http) {
+var TodoService = (function () {
+    function TodoService(_http) {
         this._http = _http;
     }
-    getAll() {
+    TodoService_1 = TodoService;
+    TodoService.prototype.getAll = function () {
         return this._http
             .get(TodoService_1.ENDPOINT.replace(/:id/, ""))
-            .map((r) => r.json());
-    }
-    getById(id) {
+            .map(function (r) { return r.json(); });
+    };
+    TodoService.prototype.getById = function (id) {
         return this._http
             .get(TodoService_1.ENDPOINT.replace(/:id/, id))
-            .map((r) => r.json());
-    }
-    add(message) {
-        let _messageStringified = JSON.stringify({ todoMessage: message });
-        let headers = new http_1.Headers();
+            .map(function (r) { return r.json(); });
+    };
+    TodoService.prototype.add = function (message) {
+        var _messageStringified = JSON.stringify({ todoMessage: message });
+        var headers = new http_1.Headers();
         headers.append("Content-Type", "application/json");
         return this._http
-            .post(TodoService_1.ENDPOINT.replace(/:id/, ""), _messageStringified, { headers })
-            .map((r) => r.json());
-    }
-    remove(id) {
+            .post(TodoService_1.ENDPOINT.replace(/:id/, ""), _messageStringified, { headers: headers })
+            .map(function (r) { return r.json(); });
+    };
+    TodoService.prototype.remove = function (id) {
         return this._http
             .delete(TodoService_1.ENDPOINT.replace(/:id/, id));
-    }
-};
-TodoService.ENDPOINT = "/api/todos/:id";
-TodoService = TodoService_1 = __decorate([
-    core_1.Injectable(),
-    __param(0, core_1.Inject(http_1.Http)),
-    __metadata("design:paramtypes", [http_1.Http])
-], TodoService);
+    };
+    TodoService.ENDPOINT = "/api/todos/:id";
+    TodoService = TodoService_1 = __decorate([
+        core_1.Injectable(),
+        __param(0, core_1.Inject(http_1.Http)),
+        __metadata("design:paramtypes", [http_1.Http])
+    ], TodoService);
+    return TodoService;
+    var TodoService_1;
+}());
 exports.TodoService = TodoService;
-var TodoService_1;

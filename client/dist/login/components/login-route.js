@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var login_cmp_1=require("../components/login-cmp"),loginRoutes=[{path:"",component:login_cmp_1.LoginCmp,pathMatch:"full"}];

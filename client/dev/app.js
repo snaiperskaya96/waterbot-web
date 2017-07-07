@@ -9,31 +9,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@angular/core");
-const router_1 = require("@angular/router");
-const core_2 = require("angular2-cookie/core");
-const user_service_1 = require("./login/services/user-service");
-let App = class App {
-    constructor(router, cookie, userService) {
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var core_2 = require("angular2-cookie/core");
+var user_service_1 = require("./login/services/user-service");
+var App = (function () {
+    function App(router, cookie, userService) {
+        var _this = this;
         this.router = router;
         this.cookie = cookie;
         this.userService = userService;
-        const auth = this.cookie.getObject('u');
+        var auth = this.cookie.getObject('u');
         this.loggedIn = auth ? auth['a'] : false;
         this.authenticationCheck();
-        this.userService.observeAuthentication(isAuthenticated => {
-            this.loggedIn = isAuthenticated;
+        this.userService.observeAuthentication(function (isAuthenticated) {
+            _this.loggedIn = isAuthenticated;
         });
         return;
     }
-    authenticationCheck() {
-        const token = this.cookie.get('wb_token');
+    App.prototype.authenticationCheck = function () {
+        var _this = this;
+        var token = this.cookie.get('wb_token');
         if (token) {
-            this.userService.verify(token).subscribe(isAuthenticated => {
-                this.loggedIn = isAuthenticated;
-                this.cookie.putObject('u', { a: isAuthenticated });
+            this.userService.verify(token).subscribe(function (isAuthenticated) {
+                _this.loggedIn = isAuthenticated;
+                _this.cookie.putObject('u', { a: isAuthenticated });
                 if (!isAuthenticated)
-                    this.router.navigateByUrl('/');
+                    _this.router.navigateByUrl('/');
             });
         }
         else {
@@ -41,14 +43,15 @@ let App = class App {
             this.cookie.putObject('u', { a: false });
             this.router.navigateByUrl('/');
         }
-    }
-};
-App = __decorate([
-    core_1.Component({
-        selector: "app",
-        templateUrl: "app.html",
-        providers: [core_2.CookieService, user_service_1.UserService]
-    }),
-    __metadata("design:paramtypes", [router_1.Router, core_2.CookieService, user_service_1.UserService])
-], App);
+    };
+    App = __decorate([
+        core_1.Component({
+            selector: "app",
+            templateUrl: "app.html",
+            providers: [core_2.CookieService, user_service_1.UserService]
+        }),
+        __metadata("design:paramtypes", [router_1.Router, core_2.CookieService, user_service_1.UserService])
+    ], App);
+    return App;
+}());
 exports.App = App;

@@ -6,17 +6,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@angular/core");
-let SettingsPlantsCmp = class SettingsPlantsCmp {
-    constructor() {
-        this.name = `yo, I"m your component :D`;
+var core_1 = require("@angular/core");
+var SettingsPlantsCmp = (function () {
+    function SettingsPlantsCmp() {
+        this.name = "yo, I\"m your component :D";
     }
-};
-SettingsPlantsCmp = __decorate([
-    core_1.Component({
-        selector: "settings-plants-cmp",
-        templateUrl: "settings/templates/settings-plants.html",
-        styleUrls: ["settings/styles/settings-plants.css"]
-    })
-], SettingsPlantsCmp);
+    SettingsPlantsCmp = __decorate([
+        core_1.Component({
+            selector: "settings-plants-cmp",
+            templateUrl: "settings/templates/settings-plants.html",
+            styleUrls: ["settings/styles/settings-plants.css"]
+        })
+    ], SettingsPlantsCmp);
+    return SettingsPlantsCmp;
+}());
 exports.SettingsPlantsCmp = SettingsPlantsCmp;

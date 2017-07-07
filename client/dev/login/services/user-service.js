@@ -12,62 +12,64 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@angular/core");
-const http_1 = require("@angular/http");
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
-const core_2 = require("angular2-cookie/core");
-let UserService = UserService_1 = class UserService {
-    constructor(_http, cookie) {
+var core_2 = require("angular2-cookie/core");
+var UserService = (function () {
+    function UserService(_http, cookie) {
         this._http = _http;
         this.cookie = cookie;
         this.authenticationCallbacks = [];
     }
-    login(username, password) {
+    UserService_1 = UserService;
+    UserService.prototype.login = function (username, password) {
         return this._http
             .post(UserService_1.ENDPOINT + "authenticate", {
             username: username,
             password: password
         })
-            .map((r) => r.json());
-    }
-    getApiTokens() {
+            .map(function (r) { return r.json(); });
+    };
+    UserService.prototype.getApiTokens = function () {
         return this._http
             .get(UserService_1.ENDPOINT + "tokens")
-            .map(r => r.json());
-    }
-    newApiToken() {
+            .map(function (r) { return r.json(); });
+    };
+    UserService.prototype.newApiToken = function () {
         return this._http
             .post(UserService_1.ENDPOINT + "tokens", {})
-            .map(r => r.json());
-    }
-    deleteApiToken(token) {
+            .map(function (r) { return r.json(); });
+    };
+    UserService.prototype.deleteApiToken = function (token) {
         return this._http
             .post(UserService_1.ENDPOINT + "tokens/delete", { token: token })
-            .map(r => r.json());
-    }
-    logout() {
+            .map(function (r) { return r.json(); });
+    };
+    UserService.prototype.logout = function () {
         this.cookie.remove('wb_token');
         this.authorized(false);
-    }
-    verify(token) {
+    };
+    UserService.prototype.verify = function (token) {
         return this._http
             .get(UserService_1.ENDPOINT + "verify")
-            .map(r => r.json());
-    }
-    observeAuthentication(callback) {
+            .map(function (r) { return r.json(); });
+    };
+    UserService.prototype.observeAuthentication = function (callback) {
         this.authenticationCallbacks.push(callback);
-    }
-    authorized(isAuthorized) {
-        this.authenticationCallbacks.forEach(callback => {
+    };
+    UserService.prototype.authorized = function (isAuthorized) {
+        this.authenticationCallbacks.forEach(function (callback) {
             callback(isAuthorized);
         });
-    }
-};
-UserService.ENDPOINT = "/api/user/";
-UserService = UserService_1 = __decorate([
-    core_1.Injectable(),
-    __param(0, core_1.Inject(http_1.Http)),
-    __metadata("design:paramtypes", [http_1.Http, core_2.CookieService])
-], UserService);
+    };
+    UserService.ENDPOINT = "/api/user/";
+    UserService = UserService_1 = __decorate([
+        core_1.Injectable(),
+        __param(0, core_1.Inject(http_1.Http)),
+        __metadata("design:paramtypes", [http_1.Http, core_2.CookieService])
+    ], UserService);
+    return UserService;
+    var UserService_1;
+}());
 exports.UserService = UserService;
-var UserService_1;

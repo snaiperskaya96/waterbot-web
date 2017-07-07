@@ -6,17 +6,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@angular/core");
-const common_1 = require("@angular/common");
-const router_1 = require("@angular/router");
-const footer_component_1 = require("./footer.component");
-let FooterModule = class FooterModule {
-};
-FooterModule = __decorate([
-    core_1.NgModule({
-        imports: [router_1.RouterModule, common_1.CommonModule],
-        declarations: [footer_component_1.FooterComponent],
-        exports: [footer_component_1.FooterComponent]
-    })
-], FooterModule);
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
+var router_1 = require("@angular/router");
+var footer_component_1 = require("./footer.component");
+var FooterModule = (function () {
+    function FooterModule() {
+    }
+    FooterModule = __decorate([
+        core_1.NgModule({
+            imports: [router_1.RouterModule, common_1.CommonModule],
+            declarations: [footer_component_1.FooterComponent],
+            exports: [footer_component_1.FooterComponent]
+        })
+    ], FooterModule);
+    return FooterModule;
+}());
 exports.FooterModule = FooterModule;

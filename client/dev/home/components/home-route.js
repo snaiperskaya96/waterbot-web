@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const router_1 = require("@angular/router");
-const home_cmp_1 = require("../components/home-cmp");
-const routes = [
+var router_1 = require("@angular/router");
+var home_cmp_1 = require("../components/home-cmp");
+var routes = [
     {
         path: "",
         component: home_cmp_1.HomeCmp,

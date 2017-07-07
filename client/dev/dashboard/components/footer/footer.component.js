@@ -6,16 +6,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@angular/core");
-let FooterComponent = class FooterComponent {
-    constructor() {
+var core_1 = require("@angular/core");
+var FooterComponent = (function () {
+    function FooterComponent() {
         this.test = new Date();
     }
-};
-FooterComponent = __decorate([
-    core_1.Component({
-        selector: 'footer-cmp',
-        templateUrl: 'dashboard/components/footer/footer.component.html',
-    })
-], FooterComponent);
+    FooterComponent = __decorate([
+        core_1.Component({
+            selector: 'footer-cmp',
+            templateUrl: 'dashboard/components/footer/footer.component.html',
+        })
+    ], FooterComponent);
+    return FooterComponent;
+}());
 exports.FooterComponent = FooterComponent;

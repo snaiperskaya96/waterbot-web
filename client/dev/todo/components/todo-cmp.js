@@ -9,10 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@angular/core");
-const todo_service_1 = require("../services/todo-service");
-let TodoCmp = class TodoCmp {
-    constructor(_todoService) {
+var core_1 = require("@angular/core");
+var todo_service_1 = require("../services/todo-service");
+var TodoCmp = (function () {
+    function TodoCmp(_todoService) {
         this._todoService = _todoService;
         this.title = "ng2do";
         this.todos = [];
@@ -20,41 +20,45 @@ let TodoCmp = class TodoCmp {
             "todoMessage": ""
         };
     }
-    ngOnInit() {
+    TodoCmp.prototype.ngOnInit = function () {
         this._getAll();
-    }
-    _getAll() {
+    };
+    TodoCmp.prototype._getAll = function () {
+        var _this = this;
         this._todoService
             .getAll()
-            .subscribe((todos) => {
-            this.todos = todos;
+            .subscribe(function (todos) {
+            _this.todos = todos;
         });
-    }
-    add(message) {
+    };
+    TodoCmp.prototype.add = function (message) {
+        var _this = this;
         this._todoService
             .add(message)
-            .subscribe((m) => {
-            this.todos.push(m);
-            this.todoForm.todoMessage = "";
+            .subscribe(function (m) {
+            _this.todos.push(m);
+            _this.todoForm.todoMessage = "";
         });
-    }
-    remove(id) {
+    };
+    TodoCmp.prototype.remove = function (id) {
+        var _this = this;
         this._todoService
             .remove(id)
-            .subscribe(() => {
-            this.todos.forEach((t, i) => {
+            .subscribe(function () {
+            _this.todos.forEach(function (t, i) {
                 if (t._id === id)
-                    return this.todos.splice(i, 1);
+                    return _this.todos.splice(i, 1);
             });
         });
-    }
-};
-TodoCmp = __decorate([
-    core_1.Component({
-        selector: "todo-cmp",
-        templateUrl: "todo/templates/todo.html",
-        styleUrls: ["todo/styles/todo.css"]
-    }),
-    __metadata("design:paramtypes", [todo_service_1.TodoService])
-], TodoCmp);
+    };
+    TodoCmp = __decorate([
+        core_1.Component({
+            selector: "todo-cmp",
+            templateUrl: "todo/templates/todo.html",
+            styleUrls: ["todo/styles/todo.css"]
+        }),
+        __metadata("design:paramtypes", [todo_service_1.TodoService])
+    ], TodoCmp);
+    return TodoCmp;
+}());
 exports.TodoCmp = TodoCmp;

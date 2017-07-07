@@ -6,17 +6,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("@angular/core");
-let HomeCmp = class HomeCmp {
-    constructor() {
-        this.name = `yo, I"m your home component :D`;
+var core_1 = require("@angular/core");
+var HomeCmp = (function () {
+    function HomeCmp() {
+        this.name = "yo, I\"m your home component :D";
     }
-};
-HomeCmp = __decorate([
-    core_1.Component({
-        selector: "home-cmp",
-        templateUrl: "home/templates/home.html",
-        styleUrls: ["home/styles/home.css"]
-    })
-], HomeCmp);
+    HomeCmp = __decorate([
+        core_1.Component({
+            selector: "home-cmp",
+            templateUrl: "home/templates/home.html",
+            styleUrls: ["home/styles/home.css"]
+        })
+    ], HomeCmp);
+    return HomeCmp;
+}());
 exports.HomeCmp = HomeCmp;

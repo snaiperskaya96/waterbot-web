@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const router_1 = require("@angular/router");
-const todo_cmp_1 = require("../components/todo-cmp");
-const todoRoutes = [
+var router_1 = require("@angular/router");
+var todo_cmp_1 = require("../components/todo-cmp");
+var todoRoutes = [
     {
         path: "todo",
         component: todo_cmp_1.TodoCmp,
