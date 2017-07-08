@@ -9,7 +9,7 @@ plantSchema.statics.getAll = () => {
   return new Promise((resolve, reject) => {
     let _query = {};
 
-    plantModel
+    plant
       .find(_query)
       .exec((err, todos) => {
         err ? reject(err)
@@ -21,27 +21,15 @@ plantSchema.statics.getAll = () => {
 plantSchema.statics.createNew = (plant) => {
   return new Promise((resolve, reject) => {
     if (!_.isObject(plant)) {
-      return reject(new TypeError('Plant is not a valid object.'));
+      return reject(new TypeError('Todo is not a valid object.'));
     }
 
-    let _something = new plantModel(plant);
+    let _something = new plant(plant);
+
     _something.save((err, saved) => {
       err ? reject(err)
         : resolve(saved);
     });
-  });
-}
-
-plantSchema.statics.getOneByName = (name, userId) => {
-  return new Promise((resolve, reject) => {
-    let _query = {name: name, userId: userId};
-
-    plantModel
-      .findOne(_query)
-      .exec((err, plant) => {
-        err ? reject(err)
-          : resolve(plant);
-      });
   });
 }
 
@@ -51,7 +39,7 @@ plantSchema.statics.removeById = (id) => {
       return reject(new TypeError('Id is not a valid string.'));
     }
 
-    plantModel
+    plant
       .findByIdAndRemove(id)
       .exec((err, deleted) => {
         err ? reject(err)
@@ -60,6 +48,6 @@ plantSchema.statics.removeById = (id) => {
   });
 }
 
-const plantModel = mongoose.model('plant', plantSchema);
+const plant = mongoose.model('plant', plantSchema);
 
-module.exports = plantModel;
+module.exports = plant;

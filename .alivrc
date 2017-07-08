@@ -1,7 +1,7 @@
 {
     "quiet": true,
     "port": 3000,
-    "http2": true,
+    "http2": false,
     "pathIndex": "client/dev",
     "only": [
         "client/dev/**/*"
@@ -13,6 +13,6 @@
     "proxy": true,
     "proxyWhen": "/api/*",
     
-    "proxyTarget": "https://localhost:3333"
+    "proxyTarget": "http://localhost:3333"
     
 }

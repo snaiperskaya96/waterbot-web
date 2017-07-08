@@ -38,7 +38,10 @@ module.exports = class Routes {
         app.use((err, req, res, next) => {
           if (err.name === 'UnauthorizedError') {
             res.status(401).send('Invalid token...');
+          } else {
+            next();
           }
+          next();
         });
    }
 }

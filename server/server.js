@@ -16,7 +16,6 @@ const DBConfig = require("./config/db.conf");
 const Routes = require("./routes/index");
 const startupFunctions = require('./commons/startup');
 const app = express();
-
 RoutesConfig.init(app);
 DBConfig.init();
 Routes.init(app, express.Router());

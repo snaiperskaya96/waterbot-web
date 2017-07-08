@@ -1,6 +1,6 @@
 "use strict";
 
-const plant = require('../dao/plant-dao');
+const plantDAO = require('../dao/plant-dao');
 
 module.exports = class plantController {
   static getAll(req, res) {
@@ -10,13 +10,27 @@ module.exports = class plantController {
       .catch(error => res.status(400).json(error));
   }
 
-  static createNew(req, res) {
-    let _plant = req.body;
-
+  static getOneByName(req, res) {
     plantDAO
-      .createNew(_plant)
+      .getOneByName(req.params.name, req.user._id)
       .then(plant => res.status(201).json(plant))
       .catch(error => res.status(400).json(error));
+  }
+
+  static createNew(req, res) {
+    plantDAO
+      .getOneByName(req.body.name, req.user._id)
+      .then(plant => {
+        if (plant) return res.status(201).json(); 
+        let _plant = req.body;
+        _plant.userId = req.user._id;
+        plantDAO
+          .createNew(_plant)
+          .then(plant => res.status(200).json(plant))
+          .catch(error => res.status(400).json(error));
+      })
+      .catch(error => res.status(400).json(error));
+
   }
 
   static removeById(req, res) {

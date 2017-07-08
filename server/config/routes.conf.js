@@ -22,7 +22,6 @@ module.exports = class RouteConfig {
             level: zlib.Z_BEST_COMPRESSION,
             threshold: "1kb"
         }));
-        
         application.use(express.static(_root + _nodeModules));
         application.use(express.static(_root + _jspmPackages));
         application.use(express.static(_root + _clientFiles));
@@ -46,6 +45,5 @@ module.exports = class RouteConfig {
               next();            
           }
         });
-
     }
 }
