@@ -21,13 +21,13 @@ var dashboard_cmp_1 = require("./dashboard/components/dashboard-cmp");
 var sidebar_component_1 = require("./dashboard/components/sidebar/sidebar.component");
 var navbar_component_1 = require("./dashboard/components/navbar/navbar.component");
 var footer_component_1 = require("./dashboard/components/footer/footer.component");
-var home_route_1 = require("client/dev/home/components/home-route");
-var home_cmp_1 = require("client/dev/home/components/home-cmp");
-var notify_service_1 = require("client/dev/services/notify.service");
-var settings_route_1 = require("client/dev/settings/components/settings-route");
-var settings_cmp_1 = require("client/dev/settings/components/settings-cmp");
-var settings_plants_1 = require("client/dev/settings/components/settings-plants");
-var settings_api_1 = require("client/dev/settings/components/settings-api");
+var home_route_1 = require("./home/components/home-route");
+var home_cmp_1 = require("./home/components/home-cmp");
+var notify_service_1 = require("./services/notify.service");
+var settings_route_1 = require("./settings/components/settings-route");
+var settings_cmp_1 = require("./settings/components/settings-cmp");
+var settings_plants_1 = require("./settings/components/settings-plants");
+var settings_api_1 = require("./settings/components/settings-api");
 var AppModule = (function () {
     function AppModule() {
     }

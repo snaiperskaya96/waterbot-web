@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var user_service_1 = require("client/dev/login/services/user-service");
+var user_service_1 = require("../../login/services/user-service");
 var SettingsApiCmp = (function () {
     function SettingsApiCmp(userService) {
         var _this = this;

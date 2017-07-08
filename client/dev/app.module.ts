@@ -14,13 +14,13 @@ import { DashboardCmp } from "./dashboard/components/dashboard-cmp";
 import { SidebarComponent } from "./dashboard/components/sidebar/sidebar.component";
 import { NavbarComponent } from "./dashboard/components/navbar/navbar.component";
 import { FooterComponent } from "./dashboard/components/footer/footer.component";
-import { HomeRouting } from "client/dev/home/components/home-route";
-import { HomeCmp } from "client/dev/home/components/home-cmp";
-import { NotifyService } from "client/dev/services/notify.service";
-import { SettingsRouting } from "client/dev/settings/components/settings-route";
-import { SettingsCmp } from "client/dev/settings/components/settings-cmp";
-import { SettingsPlantsCmp } from "client/dev/settings/components/settings-plants";
-import { SettingsApiCmp } from "client/dev/settings/components/settings-api";
+import { HomeRouting } from "./home/components/home-route";
+import { HomeCmp } from "./home/components/home-cmp";
+import { NotifyService } from "./services/notify.service";
+import { SettingsRouting } from "./settings/components/settings-route";
+import { SettingsCmp } from "./settings/components/settings-cmp";
+import { SettingsPlantsCmp } from "./settings/components/settings-plants";
+import { SettingsApiCmp } from "./settings/components/settings-api";
 
 @NgModule({
     imports: [
