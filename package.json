@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node server/index",
     "watch": "gulp",
+    "postinstall": "gulp client.build:dist",
     "dev": "tsc && concurrently \"nodemon ./server/index --watch server\" \"gulp\"",
     "build-dev": "gulp client.build:dev",
     "build-dist": "gulp client.build:dist",
