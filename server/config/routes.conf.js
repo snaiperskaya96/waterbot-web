@@ -38,7 +38,8 @@ module.exports = class RouteConfig {
             try { decodedUser = jwt.verify(token, config.jwt.token) } catch (err) {next();}
             User.getOneById(decodedUser._id)
             .then(user => {
-              req.isTokenValid = user.lastSessionToken == token || user.apiTokens.indexOf(token) > 0;
+              req.isTokenValid = user && (
+                  user.lastSessionToken == token || user.apiTokens.indexOf(token) > 0);
               next();
             });
           } else {

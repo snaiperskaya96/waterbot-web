@@ -12,5 +12,9 @@ module.exports = class plantRoutes {
     router
       .route('/api/plant/:id')
       .delete(plantController.removeById);
+
+    router
+      .route('/api/plant/update')
+      .post(plantController.update);
   }
 }

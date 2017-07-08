@@ -17,6 +17,21 @@ module.exports = class plantController {
       .catch(error => res.status(400).json(error));
   }
 
+  static update(req, res) {
+    let query = {
+      userId: req.user._id,
+      botId: req.headers.wb_id,
+      name: req.body.name
+    };
+    let plant = {
+      humidity: req.body.humidity
+    }
+    plantDAO
+      .updatePlant(query, plant)
+      .then(plant => res.status(201).json(plant))
+      .catch(error => res.status(400).json(error));
+  }
+
   static createNew(req, res) {
     plantDAO
       .getOneByName(req.body.name, req.user._id)

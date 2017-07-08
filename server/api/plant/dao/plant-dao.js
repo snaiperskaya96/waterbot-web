@@ -32,6 +32,18 @@ plantSchema.statics.createNew = (plant) => {
   });
 }
 
+plantSchema.statics.updatePlant = (query, plant) => {
+  return new Promise((resolve, reject) => {
+    if (!_.isObject(plant)) {
+      return reject(new TypeError('Plant is not a valid object.'));
+    }
+
+    plantModel.update(query, plant, (err, saved) => {
+      return err ? reject(err) : resolve({});
+    });
+  });
+}
+
 plantSchema.statics.getOneByName = (name, userId) => {
   return new Promise((resolve, reject) => {
     let _query = {name: name, userId: userId};

@@ -9,6 +9,7 @@ const _plantSchema = {
   botId: {type: String, required: true},
   wateredEvery: {type: Number, required: false, default: 0},
   wateringTimes: {time: {type: Number, required: false}, seconds: {type: Number, required: false}},
+  humidity: {type: Number, default: null},
   createdAt: {type: Date, default: Date.now}
 }
 
