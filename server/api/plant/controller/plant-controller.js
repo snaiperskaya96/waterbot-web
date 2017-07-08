@@ -24,6 +24,7 @@ module.exports = class plantController {
         if (plant) return res.status(201).json(); 
         let _plant = req.body;
         _plant.userId = req.user._id;
+        _plant.botId = req.headers.wb_id;
         plantDAO
           .createNew(_plant)
           .then(plant => res.status(200).json(plant))
