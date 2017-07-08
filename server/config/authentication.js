@@ -17,7 +17,7 @@ module.exports = {
                 }
             })
 
-            return req.headers.authorization || cookie || tokenCookie;
+            return req.headers.wb_token || cookie || tokenCookie;
         }
     },
     cookies: {
