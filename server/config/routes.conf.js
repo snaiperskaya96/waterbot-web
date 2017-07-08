@@ -36,6 +36,11 @@ module.exports = class RouteConfig {
           if (token) {
             let decodedUser;
             try { decodedUser = jwt.verify(token, config.jwt.token) } catch (err) {next();}
+            if (!decodedUser) {
+                req.isTokenValid = false;
+                res.cookies = null;
+                return next();
+            }
             User.getOneById(decodedUser._id)
             .then(user => {
               req.isTokenValid = user && (
