@@ -5,12 +5,10 @@ const Promise = require('bluebird');
 const plantSchema = require('../model/plant-model');
 const _ = require('lodash');
 
-plantSchema.statics.getAll = () => {
+plantSchema.statics.getAll = (query) => {
   return new Promise((resolve, reject) => {
-    let _query = {};
-
     plantModel
-      .find(_query)
+      .find(query)
       .exec((err, todos) => {
         err ? reject(err)
           : resolve(todos);

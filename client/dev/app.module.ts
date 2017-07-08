@@ -21,6 +21,8 @@ import { SettingsRouting } from "./settings/components/settings-route";
 import { SettingsCmp } from "./settings/components/settings-cmp";
 import { SettingsPlantsCmp } from "./settings/components/settings-plants";
 import { SettingsApiCmp } from "./settings/components/settings-api";
+import { PlantWidgetCmp } from "./plant/components/plant-widget-cmp";
+import { PlantService } from "./services/plant.service";
 
 @NgModule({
     imports: [
@@ -42,12 +44,14 @@ import { SettingsApiCmp } from "./settings/components/settings-api";
       HomeCmp,
       SettingsCmp,
       SettingsApiCmp,
-      SettingsPlantsCmp
+      SettingsPlantsCmp,
+      PlantWidgetCmp
     ],
     providers: [
       TodoService,
       UserService,
-      NotifyService
+      NotifyService,
+      PlantService
     ],
     bootstrap: [
       App,

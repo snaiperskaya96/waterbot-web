@@ -4,8 +4,11 @@ const plantDAO = require('../dao/plant-dao');
 
 module.exports = class plantController {
   static getAll(req, res) {
+    const query = {
+      userId: req.user._id
+    }
     plantDAO
-      .getAll()
+      .getAll(query)
       .then(plants => res.status(200).json(plants))
       .catch(error => res.status(400).json(error));
   }

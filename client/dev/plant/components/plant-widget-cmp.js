@@ -8,30 +8,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
-require("rxjs/add/operator/map");
-var PlantService = (function () {
-    function PlantService(http) {
-        this.http = http;
+var PlantWidgetCmp = (function () {
+    function PlantWidgetCmp() {
+        this.colWidth = '3';
     }
-    PlantService_1 = PlantService;
-    PlantService.prototype.getAll = function () {
-        return this.http
-            .get(PlantService_1.ENDPOINT)
-            .map(function (response) { return response.json(); });
-    };
-    PlantService.ENDPOINT = "/api/plant/";
-    PlantService = PlantService_1 = __decorate([
-        core_1.Injectable(),
-        __param(0, core_1.Inject(http_1.Http)),
-        __metadata("design:paramtypes", [http_1.Http])
-    ], PlantService);
-    return PlantService;
-    var PlantService_1;
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], PlantWidgetCmp.prototype, "colWidth", void 0);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], PlantWidgetCmp.prototype, "plant", void 0);
+    PlantWidgetCmp = __decorate([
+        core_1.Component({
+            selector: "plant-widget-cmp",
+            templateUrl: "plant/templates/plant-widget.html",
+            styleUrls: ["plant/styles/plant-widget.css"]
+        })
+    ], PlantWidgetCmp);
+    return PlantWidgetCmp;
 }());
-exports.PlantService = PlantService;
+exports.PlantWidgetCmp = PlantWidgetCmp;

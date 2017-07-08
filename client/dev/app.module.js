@@ -28,6 +28,8 @@ var settings_route_1 = require("./settings/components/settings-route");
 var settings_cmp_1 = require("./settings/components/settings-cmp");
 var settings_plants_1 = require("./settings/components/settings-plants");
 var settings_api_1 = require("./settings/components/settings-api");
+var plant_widget_cmp_1 = require("./plant/components/plant-widget-cmp");
+var plant_service_1 = require("./services/plant.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -52,12 +54,14 @@ var AppModule = (function () {
                 home_cmp_1.HomeCmp,
                 settings_cmp_1.SettingsCmp,
                 settings_api_1.SettingsApiCmp,
-                settings_plants_1.SettingsPlantsCmp
+                settings_plants_1.SettingsPlantsCmp,
+                plant_widget_cmp_1.PlantWidgetCmp
             ],
             providers: [
                 todo_service_1.TodoService,
                 user_service_1.UserService,
-                notify_service_1.NotifyService
+                notify_service_1.NotifyService,
+                plant_service_1.PlantService
             ],
             bootstrap: [
                 app_1.App,

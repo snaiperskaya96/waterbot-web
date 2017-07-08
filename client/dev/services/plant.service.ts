@@ -21,7 +21,8 @@ export class PlantService {
   constructor(@Inject(Http) private http: Http) {}
 
   getAll(): Observable<any>{
-    return this.http.get(PlantService.ENDPOINT)
+    return this.http
+      .get(PlantService.ENDPOINT)
       .map(response => response.json());
   }
 
