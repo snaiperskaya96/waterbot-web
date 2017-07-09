@@ -1,7 +1,9 @@
 import {
   Component,
-  Inject
+  Inject,
+  ViewChild
 } from "@angular/core";
+import { ModalService } from "../../services/modal.service";
 
 declare var $:any;
 @Component({
@@ -11,10 +13,17 @@ declare var $:any;
 })
 export class DashboardCmp {
   name: string = `yo, I"m your component :D`;
+  @ViewChild('plantEditModal') plantEditModal;
+
+  constructor(private modalService: ModalService) {
+    
+  }
 
   ngOnInit(){
       $.getScript('../../assets/js/material-dashboard.js');
       $.getScript('../../assets/js/initMenu.js');
+      //register modals
+      this.modalService.set(ModalService.PLANT_EDIT, this.plantEditModal);
   }
 
 }

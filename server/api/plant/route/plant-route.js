@@ -16,5 +16,9 @@ module.exports = class plantRoutes {
     router
       .route('/api/plant/update')
       .post(plantController.update);
+
+    router
+      .route('/api/plant/save')
+      .post(plantController.save);      
   }
 }

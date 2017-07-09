@@ -34,13 +34,16 @@ var App = (function () {
             this.userService.verify(token).subscribe(function (isAuthenticated) {
                 _this.loggedIn = isAuthenticated;
                 _this.cookie.putObject('u', { a: isAuthenticated });
-                if (!isAuthenticated)
+                if (!isAuthenticated) {
+                    _this.cookie.remove('wb_token');
                     _this.router.navigateByUrl('/');
+                }
             });
         }
         else {
             this.loggedIn = false;
             this.cookie.putObject('u', { a: false });
+            this.cookie.remove('wb_token');
             this.router.navigateByUrl('/');
         }
     };

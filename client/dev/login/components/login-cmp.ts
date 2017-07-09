@@ -25,6 +25,7 @@ declare const $:any;
 export class LoginCmp implements OnInit {
   username:string;
   password:string;
+  firstLoginAttempt: boolean = true;
 
   constructor(
     private userService: UserService, 
@@ -67,8 +68,16 @@ export class LoginCmp implements OnInit {
     this.userService.login(this.username, this.password).subscribe(
       response => {
         if (response.token) {
+          this.firstLoginAttempt = true;
           this.userService.authorized(response.token ? true : false);
           this.cookie.putObject('u', {a: true});
+        }
+      }, 
+      error => {
+        if (this.firstLoginAttempt) {
+          this.firstLoginAttempt = false;
+          this.cookie.removeAll();
+          return this.login();
         }
       } 
     );

@@ -23,6 +23,9 @@ import { SettingsPlantsCmp } from "./settings/components/settings-plants";
 import { SettingsApiCmp } from "./settings/components/settings-api";
 import { PlantWidgetCmp } from "./plant/components/plant-widget-cmp";
 import { PlantService } from "./services/plant.service";
+import { PlantWidgetEditCmp } from "./plant/components/plant-widget-edit";
+import { ModalCmp } from "./shared/components/modal";
+import { ModalService } from "./services/modal.service";
 
 @NgModule({
     imports: [
@@ -45,13 +48,16 @@ import { PlantService } from "./services/plant.service";
       SettingsCmp,
       SettingsApiCmp,
       SettingsPlantsCmp,
-      PlantWidgetCmp
+      PlantWidgetCmp,
+      PlantWidgetEditCmp,
+      ModalCmp
     ],
     providers: [
       TodoService,
       UserService,
       NotifyService,
-      PlantService
+      PlantService,
+      ModalService
     ],
     bootstrap: [
       App,

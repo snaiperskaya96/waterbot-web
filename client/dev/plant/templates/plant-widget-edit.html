@@ -1,0 +1,25 @@
+<modal-cmp #modal>
+  <div class="app-modal-header">
+    Edit {{plant.name}}
+  </div>
+  <div class="app-modal-body">
+    <form>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="name" class="form-control" id="name" readonly aria-readonly="true" [(ngModel)]="plant.name" name="name">
+      </div>
+      <div class="form-group">
+        <label for="nickname">Nickname</label>
+        <input type="nickname" class="form-control" id="nickname" [(ngModel)]="plant.nickname" name="nickname">
+      </div>
+      <div class="form-group">
+        <label for="botId">WaterBot</label>
+        <input type="botId" class="form-control" id="botId" readonly aria-readonly="true" [(ngModel)]="plant.botId" name="botId">
+      </div>
+    </form>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default" (click)="modal.hide()">Close</button>
+    <button type="button" class="btn btn-primary" (click)="onSubmit()">Save changes</button>
+  </div>
+</modal-cmp>

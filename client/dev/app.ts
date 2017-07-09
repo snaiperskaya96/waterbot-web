@@ -29,11 +29,15 @@ export class App {
 			this.userService.verify(token).subscribe(isAuthenticated => {
 				this.loggedIn = isAuthenticated;
 				this.cookie.putObject('u', {a: isAuthenticated});
-				if (!isAuthenticated) this.router.navigateByUrl('/');
+				if (!isAuthenticated) {
+					this.cookie.remove('wb_token');
+					this.router.navigateByUrl('/');
+				}
 			});
 		} else {
 			this.loggedIn = false;
 			this.cookie.putObject('u', {a: false});
+			this.cookie.remove('wb_token');
 			this.router.navigateByUrl('/');
 		}
 	}

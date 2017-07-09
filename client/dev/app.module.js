@@ -30,6 +30,9 @@ var settings_plants_1 = require("./settings/components/settings-plants");
 var settings_api_1 = require("./settings/components/settings-api");
 var plant_widget_cmp_1 = require("./plant/components/plant-widget-cmp");
 var plant_service_1 = require("./services/plant.service");
+var plant_widget_edit_1 = require("./plant/components/plant-widget-edit");
+var modal_1 = require("./shared/components/modal");
+var modal_service_1 = require("./services/modal.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -55,13 +58,16 @@ var AppModule = (function () {
                 settings_cmp_1.SettingsCmp,
                 settings_api_1.SettingsApiCmp,
                 settings_plants_1.SettingsPlantsCmp,
-                plant_widget_cmp_1.PlantWidgetCmp
+                plant_widget_cmp_1.PlantWidgetCmp,
+                plant_widget_edit_1.PlantWidgetEditCmp,
+                modal_1.ModalCmp
             ],
             providers: [
                 todo_service_1.TodoService,
                 user_service_1.UserService,
                 notify_service_1.NotifyService,
-                plant_service_1.PlantService
+                plant_service_1.PlantService,
+                modal_service_1.ModalService
             ],
             bootstrap: [
                 app_1.App,

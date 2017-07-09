@@ -28,7 +28,24 @@ module.exports = class plantController {
     };
     let plant = {
       humidity: req.body.humidity
-    }
+    };
+    plantDAO
+      .updatePlant(query, plant)
+      .then(plant => res.status(201).json(plant))
+      .catch(error => res.status(400).json(error));
+  }
+
+  static save(req, res) {
+    let query = {
+      userId: req.user._id,
+      _id: req.body._id,
+      name: req.body.name
+    };
+
+    let plant = {
+      nickname: req.body.nickname
+    };
+
     plantDAO
       .updatePlant(query, plant)
       .then(plant => res.status(201).json(plant))

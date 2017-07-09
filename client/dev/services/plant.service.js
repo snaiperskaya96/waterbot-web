@@ -25,7 +25,12 @@ var PlantService = (function () {
             .get(PlantService_1.ENDPOINT)
             .map(function (response) { return response.json(); });
     };
-    PlantService.ENDPOINT = "/api/plant/";
+    PlantService.prototype.save = function (plant) {
+        return this.http
+            .post(PlantService_1.ENDPOINT + "/save", plant)
+            .map(function (response) { return response.json(); });
+    };
+    PlantService.ENDPOINT = "/api/plant";
     PlantService = PlantService_1 = __decorate([
         core_1.Injectable(),
         __param(0, core_1.Inject(http_1.Http)),

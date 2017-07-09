@@ -19,6 +19,7 @@ var LoginCmp = (function () {
         this.userService = userService;
         this.router = router;
         this.cookie = cookie;
+        this.firstLoginAttempt = true;
         userService
             .verify(cookie.get('wb_token'))
             .subscribe(function (isAuthenticated) {
@@ -48,8 +49,15 @@ var LoginCmp = (function () {
         var _this = this;
         this.userService.login(this.username, this.password).subscribe(function (response) {
             if (response.token) {
+                _this.firstLoginAttempt = true;
                 _this.userService.authorized(response.token ? true : false);
                 _this.cookie.putObject('u', { a: true });
+            }
+        }, function (error) {
+            if (_this.firstLoginAttempt) {
+                _this.firstLoginAttempt = false;
+                _this.cookie.removeAll();
+                return _this.login();
             }
         });
     };
