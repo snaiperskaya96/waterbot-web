@@ -15,7 +15,8 @@ export class PlantWidgetEditCmp {
   private plant = {
     name: '',
     nickname: '',
-    botId: ''
+    botId: '',
+    wateredEvery: null
   };
   @ViewChild('modal') modal;
   private callBack;

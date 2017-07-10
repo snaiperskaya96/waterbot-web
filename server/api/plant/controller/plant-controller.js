@@ -43,7 +43,8 @@ module.exports = class plantController {
     };
 
     let plant = {
-      nickname: req.body.nickname
+      nickname: req.body.nickname,
+      wateredEvery: req.body.wateredEvery
     };
 
     plantDAO

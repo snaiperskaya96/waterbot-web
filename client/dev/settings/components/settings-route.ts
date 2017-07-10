@@ -9,6 +9,8 @@ import {
 import { SettingsApiCmp } from "./settings-api";
 import { SettingsPlantsCmp } from "./settings-plants";
 
+import { ModuleWithProviders} from '@angular/core';
+
 const settingsRoutes:Routes = [
 	{
 		path: "settings",

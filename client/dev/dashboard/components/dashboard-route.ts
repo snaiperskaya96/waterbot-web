@@ -7,6 +7,8 @@ import {
 	DashboardCmp
 } from "../components/dashboard-cmp";
 
+import { ModuleWithProviders} from '@angular/core';
+
 const dashboardRoutes:Routes = [
 	{
 		path: "dashboard",

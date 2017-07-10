@@ -4,6 +4,12 @@ node_modules
 unit_coverage
 client/dev/bower_components
 client/dev/**/*.js
+client/dev/**/*.js.map
+client/dev/*.js
+client/dev/*.js.map
+!client/dev/config.js
 !client/dev/assets
+client/dist
+dist
 tests/client/**/*.js
 typings

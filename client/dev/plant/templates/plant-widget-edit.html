@@ -7,14 +7,19 @@
       </div>
       <div class="form-group">
         <label for="nickname">Nickname</label>
-        <input type="nickname" class="form-control" id="nickname" [(ngModel)]="plant.nickname" name="nickname">
+        <input type="name" class="form-control" id="nickname" [(ngModel)]="plant.nickname" name="nickname">
       </div>
+      <div class="form-group">
+        <label for="wateredEvery">Watered Every</label>
+        <input type="number" class="form-control" id="wateredEvery" [(ngModel)]="plant.wateredEvery" name="wateredEvery">
+      </div>      
       <div class="form-group">
         <label for="botId">WaterBot</label>
         <input type="botId" class="form-control" id="botId" readonly aria-readonly="true" [(ngModel)]="plant.botId" name="botId">
       </div>
     </form>
   </div>
+
   <div class="app-modal-footer">
     <button type="button" class="btn btn-default" (click)="modal.hide()">Close</button>
     <button type="button" class="btn btn-primary" (click)="onSubmit()">Save changes</button>

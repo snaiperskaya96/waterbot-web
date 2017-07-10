@@ -3,9 +3,6 @@ import { HttpModule } from "@angular/http";
 import { FormsModule, FormBuilder } from "@angular/forms";
 import { BrowserModule  } from "@angular/platform-browser";
 import { App }   from "./app";
-import { TodoCmp }   from "./todo/components/todo-cmp";
-import { todoRouting } from "./todo/components/todo-route";
-import { TodoService }   from "./todo/services/todo-service";
 //import { loginRouting } from "./login/components/login-route";
 import { LoginCmp } from "./login/components/login-cmp";
 import { UserService } from "./login/services/user-service";
@@ -26,21 +23,19 @@ import { PlantService } from "./services/plant.service";
 import { PlantWidgetEditCmp } from "./plant/components/plant-widget-edit";
 import { ModalCmp } from "./shared/components/modal";
 import { ModalService } from "./services/modal.service";
-import { CalendarModule } from 'angular-calendar';
+import 'fullcalendar';
+import { CalendarComponent } from "ap-angular2-fullcalendar/src/calendar/calendar";
 
 @NgModule({
     imports: [
       BrowserModule,
-      CalendarModule,
       FormsModule,
       HttpModule,
-      todoRouting,
       HomeRouting,
       SettingsRouting
     ],
     declarations: [
       App,
-      TodoCmp,
       LoginCmp,
       DashboardCmp,
       SidebarComponent,
@@ -52,10 +47,10 @@ import { CalendarModule } from 'angular-calendar';
       SettingsPlantsCmp,
       PlantWidgetCmp,
       PlantWidgetEditCmp,
-      ModalCmp
+      ModalCmp,
+      CalendarComponent
     ],
     providers: [
-      TodoService,
       UserService,
       NotifyService,
       PlantService,
