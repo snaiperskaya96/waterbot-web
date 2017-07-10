@@ -26,10 +26,12 @@ import { PlantService } from "./services/plant.service";
 import { PlantWidgetEditCmp } from "./plant/components/plant-widget-edit";
 import { ModalCmp } from "./shared/components/modal";
 import { ModalService } from "./services/modal.service";
+import { CalendarModule } from 'angular-calendar';
 
 @NgModule({
     imports: [
       BrowserModule,
+      CalendarModule,
       FormsModule,
       HttpModule,
       todoRouting,

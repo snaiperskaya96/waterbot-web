@@ -33,6 +33,7 @@ var plant_service_1 = require("./services/plant.service");
 var plant_widget_edit_1 = require("./plant/components/plant-widget-edit");
 var modal_1 = require("./shared/components/modal");
 var modal_service_1 = require("./services/modal.service");
+var angular_calendar_1 = require("angular-calendar");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -40,6 +41,7 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
+                angular_calendar_1.CalendarModule,
                 forms_1.FormsModule,
                 http_1.HttpModule,
                 todo_route_1.todoRouting,
