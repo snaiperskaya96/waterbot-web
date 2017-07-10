@@ -9,6 +9,7 @@ client/dev/*.js
 client/dev/*.js.map
 !client/dev/config.js
 !client/dev/assets
+!client/dev/assets/js/*.js
 client/dist
 dist
 tests/client/**/*.js
