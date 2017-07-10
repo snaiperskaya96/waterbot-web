@@ -10,5 +10,5 @@ gulp.task(tasks.CLIENT_BUILD_TS, () => {
   return _tsProject.src()
                    .pipe(_tsProject())
                    .js
-                   .pipe(gulp.dest("."));
+                   .pipe(gulp.dest(base.DEV));
 });

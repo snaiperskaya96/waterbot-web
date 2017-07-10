@@ -23,8 +23,7 @@ import { PlantService } from "./services/plant.service";
 import { PlantWidgetEditCmp } from "./plant/components/plant-widget-edit";
 import { ModalCmp } from "./shared/components/modal";
 import { ModalService } from "./services/modal.service";
-import 'fullcalendar';
-import { CalendarComponent } from "ap-angular2-fullcalendar/src/calendar/calendar";
+import { ScheduleModule } from "primeng/components/schedule/schedule";
 
 @NgModule({
     imports: [
@@ -32,7 +31,8 @@ import { CalendarComponent } from "ap-angular2-fullcalendar/src/calendar/calenda
       FormsModule,
       HttpModule,
       HomeRouting,
-      SettingsRouting
+      SettingsRouting,
+      ScheduleModule
     ],
     declarations: [
       App,
@@ -47,8 +47,7 @@ import { CalendarComponent } from "ap-angular2-fullcalendar/src/calendar/calenda
       SettingsPlantsCmp,
       PlantWidgetCmp,
       PlantWidgetEditCmp,
-      ModalCmp,
-      CalendarComponent
+      ModalCmp
     ],
     providers: [
       UserService,

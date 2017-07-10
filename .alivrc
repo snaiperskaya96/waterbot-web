@@ -8,9 +8,6 @@
     ],
     "static": [
         "node_modules",
-        "node_modules/fullcalendar/dist",
-        "node_modules/jquery/dist",
-        "node_modules/moment",
         "jspm_packages"
     ],
     "proxy": true,
