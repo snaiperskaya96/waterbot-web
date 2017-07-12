@@ -3,11 +3,15 @@ import {
   Inject
 } from "@angular/core";
 
+declare let wdtEmojiBundle: any;
+declare let $: any;
 @Component({
   selector: "emoji-picker-cmp",
   templateUrl: "shared/templates/emoji-picker.html",
   styleUrls: ["shared/styles/emoji-picker.css"]
 })
 export class EmojiPickerCmp {
-  name: string = `yo, I"m your component :D`;
+  ngAfterViewInit() {
+    wdtEmojiBundle.init('#nickname');           
+  }
 }

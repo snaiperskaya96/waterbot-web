@@ -4686,3 +4686,7 @@ footer {
   .table-full-width {
     margin-left: -20px;
     margin-right: -20px; } }
+
+.wdt-emoji-picker {
+  right: 20px;
+  bottom: 20px; }

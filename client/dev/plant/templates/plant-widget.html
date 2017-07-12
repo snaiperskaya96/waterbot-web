@@ -1,6 +1,6 @@
 <div class="panel-container col col-md-{{colWidth}}">
   <div class="panel panel-default">
-    <div class="panel-heading"><h6 class="text-center">{{plant.nickname || plant.name}}</h6></div>
+    <div class="panel-heading"><h6 class="text-center" [innerHTML]="plant.HTMLNickname || plant.name"></h6></div>
     <div class="panel-body">
       Humidity: {{plant.humidity}}%
     </div>

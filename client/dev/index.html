@@ -45,8 +45,13 @@
     <script src="assets/js/material-dashboard.js?v=1.2.0"></script>
     <script src="/moment/min/moment.min.js"></script>
     <script src="/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script src="/wdt-emoji-bundle/emoji.min.js"></script>
+    <script src="/wdt-emoji-bundle/wdt-emoji-bundle.min.js"></script>
 
     <script>
+      wdtEmojiBundle.defaults.emojiSheets = {
+          'apple': '/assets/sheets/sheet_apple_64_indexed_128.png'
+      };
       System.import("./index.js");
     </script>
 

@@ -16,6 +16,9 @@
 /* ANIMATION */
 /* SHADOWS */
 /* Shadows (from mdl http://www.getmdl.io/) */
+
+@import url(/wdt-emoji-bundle/wdt-emoji-bundle.css);
+
 .noUi-target,
 .noUi-target * {
   -webkit-touch-callout: none;
@@ -5506,4 +5509,12 @@ footer .btn {
     margin-left: -20px;
     margin-right: -20px;
   }
+}
+.wdt-emoji-picker {
+  bottom: 20px !important;
+  right: 20px !important;
+}
+
+.wdt-emoji-popup {
+  z-index: 1300;
 }

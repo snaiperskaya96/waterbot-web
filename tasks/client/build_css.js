@@ -4,7 +4,7 @@ import {join} from "path";
 import {base, tasks} from "./const";
 
 
-  import sass from "gulp-sass";
+import sass from "gulp-sass";
 
 
 const CSS = base.DIST + "**/*.css";
