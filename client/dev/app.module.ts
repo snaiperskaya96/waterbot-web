@@ -24,6 +24,7 @@ import { PlantWidgetEditCmp } from "./plant/components/plant-widget-edit";
 import { ModalCmp } from "./shared/components/modal";
 import { ModalService } from "./services/modal.service";
 import { ScheduleModule } from "primeng/components/schedule/schedule";
+import { EmojiPickerCmp } from "./shared/components/emoji-picker";
 
 @NgModule({
     imports: [
@@ -47,7 +48,8 @@ import { ScheduleModule } from "primeng/components/schedule/schedule";
       SettingsPlantsCmp,
       PlantWidgetCmp,
       PlantWidgetEditCmp,
-      ModalCmp
+      ModalCmp,
+      EmojiPickerCmp
     ],
     providers: [
       UserService,

@@ -33,7 +33,7 @@
     "babel-register": "^6.24.1",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
-    "compression": "^1.6.2",
+    "compression": "^1.7.0",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.3",
     "express-content-length-validator": "^1.0.0",
@@ -54,6 +54,7 @@
     "spdy": "^3.4.7",
     "systemjs": "^0.19.47",
     "typescript": "^2.4.1",
+    "wdt-emoji-bundle": "^0.2.0",
     "zone.js": "^0.6.26"
   },
   "devDependencies": {
