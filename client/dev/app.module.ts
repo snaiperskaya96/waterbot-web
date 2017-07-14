@@ -25,15 +25,28 @@ import { ModalCmp } from "./shared/components/modal";
 import { ModalService } from "./services/modal.service";
 import { ScheduleModule } from "primeng/components/schedule/schedule";
 import { EmojiPickerCmp } from "./shared/components/emoji-picker";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PlantRouting } from "./plant/components/plant-route";
+import { CustomScheduleCmp } from "./plant/components/custom-schedule";
+import { CustomScheduleModalCmp } from "./plant/components/custom-schedule-modal";
+import { NgxDateRangePickerModule } from "ngx-daterangepicker";
+import { MdSelectModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
     imports: [
       BrowserModule,
+      BrowserAnimationsModule,
       FormsModule,
       HttpModule,
       HomeRouting,
       SettingsRouting,
-      ScheduleModule
+      ScheduleModule,
+      PlantRouting,
+      NgbModule.forRoot(),
+      NgxDateRangePickerModule,
+      MdSelectModule
     ],
     declarations: [
       App,
@@ -49,7 +62,9 @@ import { EmojiPickerCmp } from "./shared/components/emoji-picker";
       PlantWidgetCmp,
       PlantWidgetEditCmp,
       ModalCmp,
-      EmojiPickerCmp
+      EmojiPickerCmp,
+      CustomScheduleCmp,
+      CustomScheduleModalCmp
     ],
     providers: [
       UserService,

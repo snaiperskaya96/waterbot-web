@@ -1,0 +1,42 @@
+<modal-cmp #modal>
+  <div class="app-modal-body">
+    <form>
+      <div class="form-group">
+        <label for="plant">Plant</label>
+        <md-select placeholder="Select a Plant" [(ngModel)]="selectedPlant" name="selectedPlant">
+          <md-option *ngFor="let plant of plants" [value]="plant._id" [innerHTML]="plant.HTMLNickname || plant.name"></md-option>
+        </md-select>
+      </div>
+      <div class="form-group">
+        <label for="name">Description</label>
+        <input type="name" class="form-control" id="title" [(ngModel)]="event.title" name="title">
+      </div>
+      <div class="form-group">
+        <div *ngIf="!event.everyDay">
+          <label for="wateringDays">Watering Days</label>
+          <ngx-daterangepicker name="wateringDays" id="wateringDays" #wateringDays [options]="options"></ngx-daterangepicker>
+        </div>
+        <div class="form-input">
+          <label for="everyDay" class="checkbox-inline">
+            <input type="checkbox" class="" name="everyDay" id="everyDay" [checked]="event.everyDay" (change)="event.everyDay = !event.everyDay" name="everyDay">
+            Everyday
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="wateringTime">Watering Time</label>
+        <ngb-timepicker [(ngModel)]="wateringTime" name="wateringTime"></ngb-timepicker>
+      </div>
+      <div class="form-group">
+        <label for="wateredFor">Watered For (Seconds)</label>
+        <input type="number" min="0" class="form-control" id="wateredFor" [(ngModel)]="event.wateredFor" name="wateredFor">
+      </div>
+    </form>
+  </div>
+
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default" (click)="modal.hide()">Close</button>
+    <button type="button" class="btn btn-primary" (click)="onSubmit()">Save changes</button>
+  </div>
+</modal-cmp>
+<emoji-picker-cmp></emoji-picker-cmp>

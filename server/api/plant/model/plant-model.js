@@ -9,7 +9,8 @@ const _plantSchema = {
   nickname: {type: String, required: false, default: null},
   botId: {type: String, required: true},
   wateredEvery: {type: Number, required: false, default: 0},
-  wateringTimes: {time: {type: Number, required: false}, seconds: {type: Number, required: false}},
+  wateringTime: {hours: {type: Number, required: false}, minutes: {type: Number, required: false}},
+  wateredFor: {type: Number, required: false, default: 0},
   humidity: {type: Number, default: null},
   createdAt: {type: Date, default: Date.now}
 }

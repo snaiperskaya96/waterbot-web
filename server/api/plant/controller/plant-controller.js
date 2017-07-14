@@ -24,7 +24,7 @@ module.exports = class plantController {
     let query = {
       userId: req.user._id,
       botId: req.headers.wb_id,
-      name: req.body.name
+      name: req.body.name,
     };
     let plant = {
       humidity: req.body.humidity
@@ -44,7 +44,9 @@ module.exports = class plantController {
 
     let plant = {
       nickname: req.body.nickname,
-      wateredEvery: req.body.wateredEvery
+      wateredEvery: req.body.wateredEvery,
+      wateringTime: req.body.wateringTime,
+      wateredFor: req.body.wateredFor
     };
 
     plantDAO

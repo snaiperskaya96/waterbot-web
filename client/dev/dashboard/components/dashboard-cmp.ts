@@ -14,6 +14,7 @@ declare var $:any;
 export class DashboardCmp {
   name: string = `yo, I"m your component :D`;
   @ViewChild('plantEditModal') plantEditModal;
+  @ViewChild('customSchedulemodal') customSchedulemodal;
 
   constructor(private modalService: ModalService) {
     
@@ -24,6 +25,7 @@ export class DashboardCmp {
       $.getScript('../../assets/js/initMenu.js');
       //register modals
       this.modalService.set(ModalService.PLANT_EDIT, this.plantEditModal);
+      this.modalService.set(ModalService.CUSTOM_SCHEDULE, this.customSchedulemodal);
   }
 
 }
