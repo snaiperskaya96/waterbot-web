@@ -19,6 +19,19 @@ module.exports = class plantRoutes {
 
     router
       .route('/api/plant/save')
-      .post(plantController.save);      
+      .post(plantController.save);    
+      
+    router
+      .route('/api/plant/watering')
+      .post(plantController.createNewWatering)
+      .get(plantController.getWaterings);
+
+    router
+      .route('/api/plant/watering/:id')
+      .delete(plantController.deleteWatering);
+
+    router
+      .route('/api/plant/watering/update')
+      .post(plantController.updateWatering);
   }
 }

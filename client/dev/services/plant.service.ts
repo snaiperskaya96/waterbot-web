@@ -32,4 +32,28 @@ export class PlantService {
       .map(response => response.json());
   }
 
+  getWaterings(): Observable<any> {
+    return this.http
+      .get(PlantService.ENDPOINT + '/watering')
+      .map(response => response.json());
+  }
+
+  createWatering(watering): Observable<any> {
+    return this.http
+      .post(PlantService.ENDPOINT + '/watering', watering)
+      .map(response => response.json());
+  }
+
+  updateWatering(watering): Observable<any> {
+    return this.http
+      .post(PlantService.ENDPOINT + '/watering/update', watering)
+      .map(response => response.json());
+  }
+
+  deleteWatering(watering): Observable<any> {
+    return this.http
+      .delete(PlantService.ENDPOINT + '/watering/' + watering._id)
+      .map(response => response.json());
+  }
+
 }

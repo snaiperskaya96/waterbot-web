@@ -1,6 +1,8 @@
 "use strict";
 
 const plantDAO = require('../dao/plant-dao');
+const wateringDAO = require('../dao/watering-dao');
+const mongoose = require('mongoose');
 
 module.exports = class plantController {
   static getAll(req, res) {
@@ -52,6 +54,53 @@ module.exports = class plantController {
     plantDAO
       .updatePlant(query, plant)
       .then(plant => res.status(201).json(plant))
+      .catch(error => res.status(400).json(error));
+  }
+
+  static createNewWatering(req, res) {
+    let event = req.body;
+    event.userId = req.user._id;
+    wateringDAO
+        .create(event)
+        .then(event => res.status(200).json(event))
+        .catch(error => res.status(400).json(error));
+  }
+
+  static updateWatering(req, res) {
+    let query = {
+      userId: req.user._id,
+      _id: req.body._id
+    };
+
+    let plant = req.body;
+    delete plant._id;
+    delete plant.userId;
+
+    wateringDAO
+      .updateWatering(query, plant)
+      .then(plant => res.status(201).json(plant))
+      .catch(error => res.status(400).json(error));
+  }
+
+
+  static getWaterings(req, res) {
+    const query = {userId: req.user._id};
+    if (req.query.plantId) {
+      query['plantId'] = mongoose.Types.ObjectId(req.query.plantId);
+    }
+
+    wateringDAO
+      .getAll(query)
+      .then(events => res.status(200).json(events))
+      .catch(error => res.status(400).json(error));
+  }
+
+  static deleteWatering(req, res) {
+    const watering = {_id: req.params.id, userId: req.user._id};
+    console.log(watering)
+    wateringDAO
+      .deleteWateringById(watering)
+      .then(response => res.status(200).json(response))
       .catch(error => res.status(400).json(error));
   }
 
