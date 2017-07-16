@@ -10,10 +10,10 @@ module.exports = {
             let cookies = req.headers.cookie ? req.headers.cookie.split(';') : [];
             let tokenCookie = null;
             cookies.forEach((c) => {
-                if (c.split('=')[0] == 'wb_token') {
+                if (c.split('=')[0].trim() == 'wb_token') {
                     let splitted = c.split('=');
                     splitted.shift();
-                    tokenCookie = splitted.join('=');
+                    tokenCookie = splitted.join('=').trim();
                 }
             })
 

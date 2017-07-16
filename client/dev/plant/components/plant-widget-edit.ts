@@ -29,8 +29,10 @@ export class PlantWidgetEditCmp {
   public show(plant, callBack) {
     wdtEmojiBundle.init('#nickname');
     this.plant = plant;
-    this.timePicker.model.hour = this.plant.wateringTime.hours;
-    this.timePicker.model.minute = this.plant.wateringTime.minutes;
+    if (this.plant.wateringTime) {
+      this.timePicker.model.hour = this.plant.wateringTime.hours;
+      this.timePicker.model.minute = this.plant.wateringTime.minutes;
+    }
     this.callBack = callBack;
     this.modal.show();
     console.log();

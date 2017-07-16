@@ -36,7 +36,8 @@ export class CustomScheduleModalCmp {
     plantService.getAll().subscribe(plants => {
       this.plants = plants;
       this.plants.forEach((element, index, array) => {
-        array[index].HTMLNickname = this.sanitizer.bypassSecurityTrustHtml(wdtEmojiBundle.render(array[index].nickname));
+        const nickname = array[index].nickname ? wdtEmojiBundle.render(array[index].nickname) : '';
+        array[index].HTMLNickname = this.sanitizer.bypassSecurityTrustHtml(nickname);
       });
     });
   }
