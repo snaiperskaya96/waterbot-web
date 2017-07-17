@@ -4,10 +4,14 @@ const plantDAO = require('../dao/plant-dao');
 const wateringDAO = require('../dao/watering-dao');
 const mongoose = require('mongoose');
 
+/**
+ * WateringController should be separate from PlantController...
+ */
+
 module.exports = class plantController {
   static getAll(req, res) {
     const query = {
-      userId: req.user._id
+      userId: req.user._id || false
     }
     plantDAO
       .getAll(query)
@@ -24,7 +28,7 @@ module.exports = class plantController {
 
   static update(req, res) {
     let query = {
-      userId: req.user._id,
+      userId: req.user._id || false, 
       botId: req.headers.wb_id,
       name: req.body.name,
     };
@@ -39,7 +43,7 @@ module.exports = class plantController {
 
   static save(req, res) {
     let query = {
-      userId: req.user._id,
+      userId: req.user._id || false,
       _id: req.body._id,
       name: req.body.name
     };
@@ -59,7 +63,7 @@ module.exports = class plantController {
 
   static createNewWatering(req, res) {
     let event = req.body;
-    event.userId = req.user._id;
+    event.userId = req.user._id || false;
     wateringDAO
         .create(event)
         .then(event => res.status(200).json(event))
@@ -68,7 +72,7 @@ module.exports = class plantController {
 
   static updateWatering(req, res) {
     let query = {
-      userId: req.user._id,
+      userId: req.user._id || false,
       _id: req.body._id
     };
 
@@ -84,7 +88,7 @@ module.exports = class plantController {
 
 
   static getWaterings(req, res) {
-    const query = {userId: req.user._id};
+    const query = {userId: req.user._id || false};
     if (req.query.plantId) {
       query['plantId'] = mongoose.Types.ObjectId(req.query.plantId);
     }
@@ -96,8 +100,7 @@ module.exports = class plantController {
   }
 
   static deleteWatering(req, res) {
-    const watering = {_id: req.params.id, userId: req.user._id};
-    console.log(watering)
+    const watering = {_id: req.params.id, userId: req.user._id || false};
     wateringDAO
       .deleteWateringById(watering)
       .then(response => res.status(200).json(response))
@@ -106,7 +109,7 @@ module.exports = class plantController {
 
   static createNew(req, res) {
     plantDAO
-      .getOneByName(req.body.name, req.user._id)
+      .getOneByName(req.body.name, req.user._id || false)
       .then(plant => {
         if (plant) return res.status(201).json(); 
         let _plant = req.body;

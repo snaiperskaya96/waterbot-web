@@ -37,7 +37,7 @@ export class CustomScheduleCmp {
     }, deleteEvent => {
         this.events.forEach((e, id, array) => {
           if (e._id.trim() != $event.calEvent._id.trim()) return;
-          this.plantService.deleteWatering(e);
+          this.plantService.deleteWatering(e).subscribe();
           array.splice(id, 1);
         });
     });

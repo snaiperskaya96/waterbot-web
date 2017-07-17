@@ -2,7 +2,7 @@ import {
   Component,
   Inject
 } from "@angular/core";
-import { UserService } from "../../login/services/user-service";
+import { UserService } from "../../services/user.service";
 
 @Component({
   selector: "settings-api-cmp",

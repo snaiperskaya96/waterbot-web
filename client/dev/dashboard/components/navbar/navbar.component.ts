@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar-routes.config';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
-import { UserService } from "../../../login/services/user-service";
+import { UserService } from "../../../services/user.service";
 
 @Component({
     selector: 'navbar-cmp',

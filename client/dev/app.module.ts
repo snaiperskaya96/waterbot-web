@@ -5,7 +5,7 @@ import { BrowserModule  } from "@angular/platform-browser";
 import { App }   from "./app";
 //import { loginRouting } from "./login/components/login-route";
 import { LoginCmp } from "./login/components/login-cmp";
-import { UserService } from "./login/services/user-service";
+import { UserService } from "./services/user.service";
 import { dashboardRouting } from "./dashboard/components/dashboard-route";
 import { DashboardCmp } from "./dashboard/components/dashboard-cmp";
 import { SidebarComponent } from "./dashboard/components/sidebar/sidebar.component";

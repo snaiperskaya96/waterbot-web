@@ -1,10 +1,13 @@
 import {
   Component,
   Inject,
-  ViewChild
+  ViewChild,
+  OnDestroy
 } from "@angular/core";
 import { PlantService } from "../../services/plant.service";
 import { ScheduleModule } from 'primeng/primeng';
+import { Router } from "@angular/router";
+import { UserService } from "../../services/user.service";
 
 @Component({
   selector: "home-cmp",
@@ -12,54 +15,39 @@ import { ScheduleModule } from 'primeng/primeng';
   styleUrls: ["home/styles/home.css"],
   providers: [PlantService]
 })
-export class HomeCmp {
+export class HomeCmp implements OnDestroy {
   private plants = [];
-    events: any[];
+  private interval: any;
 
-    ngOnInit() {
-        this.events = [
-            {
-                "title": "All Day Event",
-                "start": "2016-01-01"
-            },
-            {
-                "title": "Long Event",
-                "start": "2016-01-07",
-                "end": "2016-01-10"
-            },
-            {
-                "title": "Repeating Event",
-                "start": "2016-01-09T16:00:00"
-            },
-            {
-                "title": "Repeating Event",
-                "start": "2016-01-16T16:00:00"
-            },
-            {
-                "title": "Conference",
-                "start": "2016-01-11",
-                "end": "2016-01-13"
-            }
-        ];
-    }
-
-  constructor(@Inject(PlantService) private plantService: PlantService) {
-    this.refresh(this);
+  constructor(
+    private plantService: PlantService, 
+    private router: Router,
+    private userService: UserService
+  ) {
+    this.refresh();
+    this.interval = setInterval(() => {this.refresh()}, 10000);
   }
 
-  private refresh(self) {
-    self.plantService.getAll().subscribe(result => {
+  ngOnDestroy(): void {
+    clearInterval(this.interval);
+  }
+
+  private refresh() {
+    this.plantService.getAll().subscribe(result => {
       result.forEach(element => {
         let found: boolean = false;
-        self.plants.forEach((plant, index) => {
+        this.plants.forEach((plant, index) => {
           if (plant._id == element._id) {
             found = true;
-            self.plants[index].humidity = element.humidity;
+            this.plants[index].humidity = element.humidity;
           }
         });
-        if (!found) self.plants.push(element);
+        if (!found) this.plants.push(element);
       });
-      setTimeout(() => {self.refresh(self)}, 10000);
+      
+    }, error => {
+      this.userService.logout();
+      this.router.navigate(['/']);
     });
   }
 }

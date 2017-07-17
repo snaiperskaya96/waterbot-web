@@ -11,7 +11,7 @@ import {
 
 import {
   UserService
-} from "../services/user-service";
+} from "../../services/user.service";
 import { Router } from "@angular/router";
 import { CookieService } from 'angular2-cookie/core';
 
@@ -61,7 +61,6 @@ export class LoginCmp implements OnInit {
   }
 
   register() {
-    alert('yay');
   }
 
   login() {
