@@ -18,8 +18,18 @@ module.exports = class customDataController {
     _customData.botId = req.headers.wb_id;
 
     customDataDAO
-      .createNew(_customData)
-      .then(customData => res.status(201).json(customData))
+      .findOne({userId: req.user._id, botId: req.headers.wb_id, name: req.body.name})
+      .then((res) => {
+        if (res) {
+          req.body._id = res._id;
+          updateById(req, res);
+        } else {
+          customDataDAO
+            .createNew(_customData)
+            .then(customData => res.status(201).json(customData))
+            .catch(error => res.status(400).json(error));
+        }
+      })
       .catch(error => res.status(400).json(error));
   }
 
