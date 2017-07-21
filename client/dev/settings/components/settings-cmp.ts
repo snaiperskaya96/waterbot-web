@@ -11,10 +11,11 @@ import {
 export class SettingsCmp {
   menu = [
     {name: 'API', class: 'active', id: 0},
-    {name: 'Plants', class: '', id: 1}
+    {name: 'Custom Data', class: '', id: 1},
+    {name: 'General', class: '', id: 2}
   ];
   
-  private components = ['settings-api-cmp', 'settings-plants-cmp'];
+  private components = ['settings-api-cmp', 'settings-custom-data-cmp', ''];
 
   activeComponent: String;
 

@@ -24,18 +24,24 @@ import { PlantWidgetEditCmp } from "./plant/components/plant-widget-edit";
 import { ModalCmp } from "./shared/components/modal";
 import { ModalService } from "./services/modal.service";
 import { ScheduleModule } from "primeng/components/schedule/schedule";
+import { InputSwitchModule } from 'primeng/primeng';
 import { EmojiPickerCmp } from "./shared/components/emoji-picker";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PlantRouting } from "./plant/components/plant-route";
 import { CustomScheduleCmp } from "./plant/components/custom-schedule";
 import { CustomScheduleModalCmp } from "./plant/components/custom-schedule-modal";
 import { NgxDateRangePickerModule } from "ngx-daterangepicker";
-import { MdSelectModule } from '@angular/material';
+import { MdSelectModule, MdSlideToggleModule, MdTableModule, MdInputModule, MdToolbarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CustomDataService } from "./services/custom-data.service";
+import { CustomDataCmp } from "./custom-data/components/custom-data";
+import { SettingsCustomDataCmp } from "./settings/components/settings-custom-data";
+import { CdkTableModule } from '@angular/cdk';
 
 
 @NgModule({
     imports: [
+      CdkTableModule,
       BrowserModule,
       BrowserAnimationsModule,
       FormsModule,
@@ -46,7 +52,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       PlantRouting,
       NgbModule.forRoot(),
       NgxDateRangePickerModule,
-      MdSelectModule
+      MdSelectModule,
+      MdSlideToggleModule,
+      MdTableModule,
+      MdInputModule,
+      MdToolbarModule,
+      InputSwitchModule
     ],
     declarations: [
       App,
@@ -59,18 +70,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       SettingsCmp,
       SettingsApiCmp,
       SettingsPlantsCmp,
+      SettingsCustomDataCmp,
       PlantWidgetCmp,
       PlantWidgetEditCmp,
       ModalCmp,
       EmojiPickerCmp,
       CustomScheduleCmp,
-      CustomScheduleModalCmp
+      CustomScheduleModalCmp,
+      CustomDataCmp
     ],
     providers: [
       UserService,
       NotifyService,
       PlantService,
-      ModalService
+      ModalService,
+      CustomDataService
     ],
     bootstrap: [
       App,

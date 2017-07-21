@@ -33,12 +33,15 @@ export class CustomScheduleModalCmp {
    */
 
   constructor(private plantService: PlantService, private sanitizer: DomSanitizer) {
-    plantService.getAll().subscribe(plants => {
-      this.plants = plants;
-      this.plants.forEach((element, index, array) => {
+  }
+
+  updatePlantsList() {
+    this.plantService.getAll().subscribe(plants => {
+      plants.forEach((element, index, array) => {
         const nickname = array[index].nickname ? wdtEmojiBundle.render(array[index].nickname) : '';
-        array[index].HTMLNickname = this.sanitizer.bypassSecurityTrustHtml(nickname);
+        array[index].HTMLNickname = nickname == '' ? false : this.sanitizer.bypassSecurityTrustHtml(nickname);
       });
+      this.plants = plants;
     });
   }
 
@@ -92,6 +95,7 @@ export class CustomScheduleModalCmp {
   }
 
   public show(event, callBack) {
+    this.updatePlantsList();
     delete this.event._id;
 
     this.callBack = callBack;

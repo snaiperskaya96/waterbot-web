@@ -1,6 +1,6 @@
 "use strict";
 
-const TodoRoutes = require("../api/todo/route/todo-route");
+const CustomDataRoutes = require("../api/custom-data/route/custom-data-route");
 const UserRoutes = require("../api/user/route/user-route");
 const PlantRoutes = require('../api/plant/route/plant-route');
 
@@ -26,6 +26,7 @@ module.exports = class Routes {
 
         UserRoutes.init(router);
         PlantRoutes.init(router);
+        CustomDataRoutes.init(router);
 
         router
           .route("*")
@@ -39,6 +40,7 @@ module.exports = class Routes {
           if (err.name === 'UnauthorizedError') {
             res.status(401).json('Invalid token');
           } else {
+            console.log(err);
             next();
           }
         });

@@ -1,0 +1,50 @@
+<div>
+  <h3>Custom Data Settings</h3>
+</div>
+
+<div>
+    Enable or disable custom data monitoring on the dashboard
+</div>
+
+<div>
+    <div class="example-container mat-elevation-z8">
+    <md-table #table [dataSource]="dataSource">
+
+        <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- ID Column -->
+        <ng-container cdkColumnDef="name">
+        <md-header-cell *cdkHeaderCellDef> Name </md-header-cell>
+        <md-cell *cdkCellDef="let row"> {{row.nickname || row.name}} </md-cell>
+        </ng-container>
+
+        <!-- Progress Column -->
+        <ng-container cdkColumnDef="botId">
+        <md-header-cell *cdkHeaderCellDef> Bot </md-header-cell>
+        <md-cell *cdkCellDef="let row"> {{row.botId}} </md-cell>
+        </ng-container>
+
+        <ng-container cdkColumnDef="value">
+        <md-header-cell *cdkHeaderCellDef>Current Value</md-header-cell>
+        <md-cell *cdkCellDef="let row"> {{row.value}} </md-cell>
+        </ng-container>
+    
+
+        <!-- Color Column -->
+        <ng-container cdkColumnDef="enabled">
+        <md-header-cell *cdkHeaderCellDef>Enabled</md-header-cell>
+        <md-cell *cdkCellDef="let row"> <md-slide-toggle [id]="row._id" [(ngModel)]="row.enabled" (change)="onChange($event)"></md-slide-toggle> </md-cell>
+        </ng-container>
+    
+        <!-- Name Column -->
+        <ng-container cdkColumnDef="edit">
+        <md-header-cell *cdkHeaderCellDef> Edit </md-header-cell>
+        <md-cell *cdkCellDef="let row"> <a href="#"><i class="material-icons">mode_edit</i></a> </md-cell>
+        </ng-container>
+
+        <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+        <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
+    </md-table>
+    </div>
+</div>

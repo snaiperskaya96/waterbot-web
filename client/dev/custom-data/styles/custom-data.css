@@ -1,0 +1,13 @@
+.custom-data-title {
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase; }
+
+.custom-data-container {
+  margin: 10px;
+  float: right; }
+
+.custom-data-value {
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase; }
