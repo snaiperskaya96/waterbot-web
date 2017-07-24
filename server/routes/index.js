@@ -3,6 +3,7 @@
 const CustomDataRoutes = require("../api/custom-data/route/custom-data-route");
 const UserRoutes = require("../api/user/route/user-route");
 const PlantRoutes = require('../api/plant/route/plant-route');
+const AdminSettingsRoutes = require('../api/user/route/admin-settings-route');
 
 const User = require('../api/user/dao/user-dao');
 const StaticDispatcher = require("../commons/static/index");
@@ -27,6 +28,7 @@ module.exports = class Routes {
         UserRoutes.init(router);
         PlantRoutes.init(router);
         CustomDataRoutes.init(router);
+        AdminSettingsRoutes.init(router);
 
         router
           .route("*")

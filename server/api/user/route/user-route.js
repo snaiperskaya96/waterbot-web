@@ -10,6 +10,10 @@ module.exports = class userRoutes {
       .post(userController.createNew);
 
     router
+      .route('/api/user/update')
+      .post(userController.updateUser);
+
+    router
       .route('/api/user/:id')
       .delete(userController.removeById);
 

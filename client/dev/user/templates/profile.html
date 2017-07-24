@@ -1,0 +1,37 @@
+<div class="profile-container">
+  <div class="row col-md-6 col-sm-12 col-xs-12">
+    <h4>Login</h4>
+    <md-input-container class="col col-md-12">
+      <input mdInput placeholder="Username" [(ngModel)]="user.username">
+    </md-input-container>
+
+    <md-input-container class="col col-md-12">
+      <input mdInput placeholder="E-mail" [(ngModel)]="user.email">
+    </md-input-container>  
+
+    <md-input-container class="col col-md-12">
+      <input mdInput placeholder="Password" type="password" [(ngModel)]="user.password">
+    </md-input-container> 
+
+    <md-input-container class="col col-md-12">
+      <input mdInput placeholder="Repeat Password" type="password" [(ngModel)]="repeatPassword">
+    </md-input-container> 
+  </div>
+  <div class="row col-md-6 col-sm-12 col-xs-12">
+    <h4>Profile</h4>
+    <md-input-container class="col col-md-12">
+      <input mdInput placeholder="First Name" [(ngModel)]="profile.firstName">
+    </md-input-container>
+
+    <md-input-container class="col col-md-12">
+      <input mdInput placeholder="Last Name" [(ngModel)]="profile.lastName">
+    </md-input-container>  
+
+    <md-input-container class="col col-md-12">
+      <input mdInput placeholder="Alert E-mail" [(ngModel)]="profile.alertEmail">
+    </md-input-container> 
+  </div>
+</div>
+<div class="row col-md-12 col-sm-12 col-xs-12 text-right">
+  <a class="btn btn-primary" (click)="onSave()">Save</a>
+</div>

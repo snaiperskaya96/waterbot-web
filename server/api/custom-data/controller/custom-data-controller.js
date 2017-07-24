@@ -55,8 +55,8 @@ module.exports = class customDataController {
     const query = {_id: req.params.id, userId: req.user._id};
 
     customDataDAO
-      .remove(query, {justOne: true})
-      .then(() => res.status(200).end())
+      .doRemove(query)
+      .then(() => res.status(200).json({}))
       .catch(error => res.status(400).json(error));
   }
 }

@@ -18,7 +18,7 @@ module.exports = class userController {
           user 
           && blowfisher.trimZeros(blowfisher.decrypt(user.password)) == _user.password
         ) {
-          let token = jwt.sign(user.toObject(), config.jwt.token, {expiresIn: '8 hours'});
+          let token = jwt.sign(user, config.jwt.token, {expiresIn: '8 hours'});
           user.lastSessionToken = token;
           user.save();
           json.token = token;
@@ -43,7 +43,7 @@ module.exports = class userController {
   static get(req, res) {
     userDAO
       .getOneById(req.user._id)
-      .then(user => res.status(200).json(user.toObject()))
+      .then(user => res.status(200).json(user))
       .catch(error => res.status(400).json(error));
   }
 
@@ -58,7 +58,7 @@ module.exports = class userController {
     userDAO
       .getOneById(req.user._id)
       .then(user => {
-        const token = jwt.sign({_id: user._id}, config.jwt.token);
+        const token = jwt.sign({_id: user._id, isAdmin: user.isAdmin}, config.jwt.token);
         user.apiTokens.push(token);
         user.save();
         res.status(200).json(token);
@@ -93,6 +93,17 @@ module.exports = class userController {
     userDAO
       .removeById(_id)
       .then(() => res.status(200).end())
+      .catch(error => res.status(400).json(error));
+  }
+
+  static updateUser(req, res) {
+    const _id = req.user._id;
+    req.body._id = _id;
+    const query = {_id: _id};
+
+    userDAO
+      .updateUser(query, req.body)
+      .then((user) => res.status(200).json(user))
       .catch(error => res.status(400).json(error));
   }
 }

@@ -38,6 +38,10 @@ import { CustomDataCmp } from "./custom-data/components/custom-data";
 import { SettingsCustomDataCmp } from "./settings/components/settings-custom-data";
 import { CdkTableModule } from '@angular/cdk';
 import { CustomDataModalCmp } from "./custom-data/components/custom-data-modal";
+import { ProfileCmp } from "./user/components/profile";
+import { UserRouting } from "./user/components/user-route";
+import { AdminSettingsCmp } from "./user/components/admin-settings";
+import { AdminSettingsService } from "./services/admin-settings.service";
 
 
 @NgModule({
@@ -51,6 +55,7 @@ import { CustomDataModalCmp } from "./custom-data/components/custom-data-modal";
       SettingsRouting,
       ScheduleModule,
       PlantRouting,
+      UserRouting,
       NgbModule.forRoot(),
       NgxDateRangePickerModule,
       MdSelectModule,
@@ -79,14 +84,17 @@ import { CustomDataModalCmp } from "./custom-data/components/custom-data-modal";
       CustomScheduleCmp,
       CustomScheduleModalCmp,
       CustomDataCmp,
-      CustomDataModalCmp
+      CustomDataModalCmp,
+      ProfileCmp,
+      AdminSettingsCmp
     ],
     providers: [
       UserService,
       NotifyService,
       PlantService,
       ModalService,
-      CustomDataService
+      CustomDataService,
+      AdminSettingsService
     ],
     bootstrap: [
       App,

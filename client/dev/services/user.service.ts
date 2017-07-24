@@ -69,4 +69,29 @@ export class UserService {
       callback(isAuthorized);
     });
   }
+
+  get() : Observable<UserInterface> {
+    return this._http
+      .get(UserService.ENDPOINT)
+      .map(r => r.json());
+  }
+
+  update(user: UserInterface) : Observable<UserInterface> {
+    return this._http
+      .post(UserService.ENDPOINT + "update", user)
+      .map(r => r.json());
+  }
+}
+
+export interface UserProfileInterface {
+      firstName: string;
+      lastName: string;
+      alertEmail: string;
+}
+
+export interface UserInterface {
+    username: string;
+    email: string;
+    password: string;
+    profile: UserProfileInterface;
 }

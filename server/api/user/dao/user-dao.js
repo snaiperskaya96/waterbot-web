@@ -44,7 +44,8 @@ userSchema.statics.getAll = () => {
   });
 }
 
-userSchema.statics.createNew = (user) => {
+userSchema.statics.createNew = (user, allowAdmin = false) => {
+  if (!allowAdmin) delete user.isAdmin;
   return new Promise((resolve, reject) => {
     if (!_.isObject(user)) {
       return reject(new TypeError('User is not a valid object.'));
@@ -76,13 +77,26 @@ userSchema.statics.removeById = (id) => {
   });
 }
 
-if (!userSchema.options.toObject) userSchema.options.toObject = {};
+userSchema.statics.updateUser = (query, user) => {
+  if (user.password) user.password = (new Blowfish(config.user.secret)).encrypt(user.password);
+  else delete user.password;
+  
+  return new Promise((resolve, reject) => {
+    userModel
+      .update(query, user, (error, response) => {
+        error ? reject(error) : resolve(user);
+      });
+  });
+}
 
-userSchema.options.toObject.transform = function (doc, ret, options) {
+if (!userSchema.options.toJSON) userSchema.options.toJSON = {};
+
+userSchema.options.toJSON.transform = function (doc, ret, options) {
   delete ret.password;
   delete ret.lastSessionToken;
   delete ret.__v;
   delete ret.createdAt;
+  delete ret.isAdmin;
   return ret;
 }
 

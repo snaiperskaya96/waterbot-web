@@ -48,20 +48,27 @@ customDataSchema.statics.removeById = (id, userId) => {
 }
 
 customDataSchema.statics.doUpdate = (query, data) => {
-  console.log(query)
   return new Promise((resolve, reject) => {
     CustomData.update(query, data, (err, resp) => {
       err ? reject(err)
         : resolve(resp);
     });
   });
-  
+}
+
+customDataSchema.statics.doRemove = (query, options) => {
+  return new Promise((resolve, reject) => {
+    CustomData.findOneAndRemove(query, (err, resp) => {
+      err ? reject(err)
+        : resolve(resp);
+    });
+  });
 }
 
 if (!customDataSchema.options.toJSON) customDataSchema.options.toJSON = {};
 
 customDataSchema.options.toJSON.transform = function (doc, ret, options) {
-  if (!ret.format) return ret;
+  if (!ret || !ret.format) return ret;
   try {
     ret.formattedValue = sprintf(ret.format, ret.value);
   } catch(exception) {}

@@ -1,0 +1,5 @@
+<div *ngFor="let setting of settings" class="settings-container">
+  <div *ngIf="setting.type == 'boolean'">
+    <md-slide-toggle (change)="onChange(setting)" [(ngModel)]="setting.value">{{setting.name}}</md-slide-toggle>
+  </div>
+</div>
