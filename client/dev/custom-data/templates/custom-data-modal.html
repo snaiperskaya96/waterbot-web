@@ -1,0 +1,29 @@
+<modal-cmp #modal>
+  <div class="app-modal-body">
+    <form>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="name" class="form-control" id="name" readonly aria-readonly="true" [(ngModel)]="data.name" name="name">
+      </div>
+      <div class="form-group">
+        <label for="nickname">Nickname</label>
+        <input type="name" class="form-control wdt-emoji-open-on-colon" id="nickname" [(ngModel)]="data.nickname" name="nickname">
+      </div>
+      <div class="form-group">
+        <label for="format">Value Formatting (see <a href="https://github.com/alexei/sprintf.js#format-specification" target="_blank">here</a>)</label>
+        <input type="name" class="form-control" id="format" [(ngModel)]="data.format" name="format">
+      </div>
+      <div class="form-group">
+        <label for="botId">WaterBot</label>
+        <input type="botId" class="form-control" id="botId" readonly aria-readonly="true" [(ngModel)]="data.botId" name="botId">
+      </div>
+    </form>
+  </div>
+
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-danger" (click)="deleteData()">Delete</button>
+    <button type="button" class="btn btn-default" (click)="modal.hide()">Close</button>
+    <button type="button" class="btn btn-primary" (click)="onSubmit()">Save changes</button>
+  </div>
+</modal-cmp>
+<emoji-picker-cmp></emoji-picker-cmp>

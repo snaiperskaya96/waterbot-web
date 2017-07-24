@@ -37,6 +37,7 @@ import { CustomDataService } from "./services/custom-data.service";
 import { CustomDataCmp } from "./custom-data/components/custom-data";
 import { SettingsCustomDataCmp } from "./settings/components/settings-custom-data";
 import { CdkTableModule } from '@angular/cdk';
+import { CustomDataModalCmp } from "./custom-data/components/custom-data-modal";
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { CdkTableModule } from '@angular/cdk';
       EmojiPickerCmp,
       CustomScheduleCmp,
       CustomScheduleModalCmp,
-      CustomDataCmp
+      CustomDataCmp,
+      CustomDataModalCmp
     ],
     providers: [
       UserService,

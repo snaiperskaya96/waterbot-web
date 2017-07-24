@@ -1,6 +1,8 @@
 <div class="row">
   <div class="custom-data-container" *ngFor="let data of customData">
-    <div class="custom-data-title">{{data.nickname || data.name}}: {{data.value}}</div>
+    <div class="custom-data-title">
+      <span class="custom-data-name" [innerHTML]="data.sanitizedHtml || data.name"></span>: <span class="custom-data-value">{{data.formattedValue || data.value}}</span>
+    </div>
   </div>
   <div style="clear:both"></div>
 </div>

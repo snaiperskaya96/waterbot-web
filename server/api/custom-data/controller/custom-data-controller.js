@@ -12,6 +12,15 @@ module.exports = class customDataController {
       .catch(error => res.status(400).json(error));
   }
 
+  static getOneById(req, res) {
+    const query = {userId: req.user._id, _id: req.params.id};
+
+    customDataDAO
+      .findOne(query)
+      .then(customData => res.status(200).json(customData))
+      .catch(error => res.status(400).json(error));
+  }
+
   static createNew(req, res) {
     let _customData = req.body;
     _customData.userId = req.user._id;
@@ -19,10 +28,10 @@ module.exports = class customDataController {
 
     customDataDAO
       .findOne({userId: req.user._id, botId: req.headers.wb_id, name: req.body.name})
-      .then((res) => {
-        if (res) {
-          req.body._id = res._id;
-          updateById(req, res);
+      .then((data) => {
+        if (data) {
+          req.body._id = data._id;
+          return customDataController.updateById(req, res);
         } else {
           customDataDAO
             .createNew(_customData)
@@ -36,18 +45,17 @@ module.exports = class customDataController {
   static updateById(req, res) {
     const query = {_id: req.body._id, userId: req.user._id};
     delete req.body._id;
-
     customDataDAO
       .doUpdate(query, req.body)
-      .then(() => res.status(200).end())
+      .then((response) => res.status(200).json(response))
       .catch(error => {res.status(400).json(error)});
   }
 
   static removeById(req, res) {
-    const _id = req.params.id;
+    const query = {_id: req.params.id, userId: req.user._id};
 
     customDataDAO
-      .removeById(_id, req.user._id)
+      .remove(query, {justOne: true})
       .then(() => res.status(200).end())
       .catch(error => res.status(400).json(error));
   }

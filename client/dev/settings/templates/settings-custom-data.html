@@ -40,7 +40,7 @@
         <!-- Name Column -->
         <ng-container cdkColumnDef="edit">
         <md-header-cell *cdkHeaderCellDef> Edit </md-header-cell>
-        <md-cell *cdkCellDef="let row"> <a href="#"><i class="material-icons">mode_edit</i></a> </md-cell>
+        <md-cell *cdkCellDef="let row"> <a (click)="edit(row._id)"><i class="material-icons">mode_edit</i></a> </md-cell>
         </ng-container>
 
         <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>

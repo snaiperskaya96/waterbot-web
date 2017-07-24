@@ -9,7 +9,8 @@ const _customDataSchema = {
   nickname: {type: String, required: false, trim: true},
   enabled: {type: Boolean, required: false, trim: true, default: false},
   userId: {type: mongoose.Schema.Types.ObjectId, required: true, trim: true},
-  createdAt: {type: Date, default: Date.now}
+  createdAt: {type: Date, default: Date.now},
+  format: {type: String, required: false, trim: false}
 }
 
 module.exports = mongoose.Schema(_customDataSchema);

@@ -15,6 +15,7 @@ export class DashboardCmp {
   name: string = `yo, I"m your component :D`;
   @ViewChild('plantEditModal') plantEditModal;
   @ViewChild('customSchedulemodal') customSchedulemodal;
+  @ViewChild('customDataModal') customDataModal;
 
   constructor(private modalService: ModalService) {
     
@@ -26,6 +27,7 @@ export class DashboardCmp {
       //register modals
       this.modalService.set(ModalService.PLANT_EDIT, this.plantEditModal);
       this.modalService.set(ModalService.CUSTOM_SCHEDULE, this.customSchedulemodal);
+      this.modalService.set(ModalService.CUSTOM_DATA_EDIT, this.customDataModal);
   }
 
 }

@@ -15,6 +15,10 @@ module.exports = class customDataRoutes {
 
     router
       .route('/api/custom-data/:id')
-      .delete(customDataController.removeById);
+      .get(customDataController.getOneById);
+
+    router
+      .route('/api/custom-data/delete/:id')
+      .get(customDataController.removeById);
   }
 }

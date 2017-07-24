@@ -26,6 +26,12 @@ export class CustomDataService {
       .map(response => response.json());
   }
 
+  getOne(id): Observable<CustomDataInterface> {
+    return this.http
+      .get(CustomDataService.ENDPOINT + '/' + id)
+      .map(response => response.json());
+  }
+
   save(data): Observable<CustomDataInterface> {
     return this.http
       .post(CustomDataService.ENDPOINT, data)
@@ -38,13 +44,21 @@ export class CustomDataService {
         .post(CustomDataService.ENDPOINT + "/update", data)
         .map(response => response.json());
   }
+
+  deleteById(id): Observable<any> {
+    return this.http
+      .get(CustomDataService.ENDPOINT + "/delete/" + id)
+      .map(response => response.json());
+  }
 }
 
 export interface CustomDataInterface {
   _id: any;
   name: string;
   value: string;
+  formattedValue: string;
   botId: string;
   nickname: string;
   enabled: boolean;
+  format: string;
 }
