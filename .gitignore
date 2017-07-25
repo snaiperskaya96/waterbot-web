@@ -14,3 +14,4 @@ client/dist
 dist
 tests/client/**/*.js
 typings
+client/dev/**/*.js.map
