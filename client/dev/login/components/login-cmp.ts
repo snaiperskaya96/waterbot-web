@@ -68,8 +68,8 @@ export class LoginCmp implements OnInit {
       response => {
         if (response.token) {
           this.firstLoginAttempt = true;
-          this.userService.authorized(response.token ? true : false);
           this.cookie.putObject('u', {a: true});
+          this.userService.authorized(response.token ? true : false);
         }
       }, 
       error => {

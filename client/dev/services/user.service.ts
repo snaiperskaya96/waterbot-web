@@ -50,6 +50,7 @@ export class UserService {
   }
 
   logout(): void {
+    debugger;
     this.cookie.remove('wb_token');
     this.authorized(false);
   }

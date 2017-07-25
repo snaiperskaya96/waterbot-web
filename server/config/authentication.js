@@ -16,7 +16,6 @@ module.exports = {
                     tokenCookie = splitted.join('=').trim();
                 }
             })
-
             return req.headers.wb_token || cookie || tokenCookie;
         }
     },

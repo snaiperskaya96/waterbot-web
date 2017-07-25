@@ -8,6 +8,7 @@ const Blowfish = require('javascript-blowfish').Blowfish;
 module.exports = class userController {
 
   static authenticate(req, res) {
+    if (req.isTokenValid) return res.status(200).json();
     const _user = req.body;
     userDAO
       .getOneByUsername(_user.username)
@@ -18,7 +19,7 @@ module.exports = class userController {
           user 
           && blowfisher.trimZeros(blowfisher.decrypt(user.password)) == _user.password
         ) {
-          let token = jwt.sign(user, config.jwt.token, {expiresIn: '8 hours'});
+          let token = jwt.sign({_id: user._id, isAdmin: user.isAdmin}, config.jwt.token, {expiresIn: '8 hours'});
           user.lastSessionToken = token;
           user.save();
           json.token = token;
